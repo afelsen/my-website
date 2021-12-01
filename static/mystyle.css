@@ -1,0 +1,48 @@
+.grow {
+transition: all .2s ease-in-out;
+}
+
+.grow:hover {
+transform: scale(1.1);
+}
+
+.node {
+    margin: auto;
+    display: block;
+
+    max-width: 100%;
+    border-radius: 50%;
+
+    object-fit:cover;
+
+    background-size:cover;
+    background-position:center;
+
+
+    border-style: solid;
+    border-width: 10px;
+    border-color: black;
+}
+
+.col1 {
+  height:20vh;
+  width:20vh;
+}
+
+.col2 {
+  height:15vh;
+  width:15vh;
+}
+
+.column {
+  float: left;
+  width: 20.00%;
+  margin:0 auto;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
