@@ -1,0 +1,41 @@
+{% include "base.html" %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <body onload="pencil()">
+        <p><h2 id="title">Paint App</h2></p>
+        <p><table>
+            <tr>
+            <td>
+                <fieldset id="toolset">
+                <br>
+                <br>
+                <button id="penciltool" type="button" style="height: 50px; width: 50px;" onclick="pencil()"><i class="fa fa-pencil"></i></button>
+                <br>
+                <br>
+                <br>
+                <button id="erasertool" type="button" style="height: 50px; width: 50px;" onclick="eraser()"><i class="fa fa-eraser"></i></button>
+                <br>
+                <br>
+                <br>
+                <button id="resettool" type="button" style="height: 50px; width: 50px;" onclick="reset()">Reset</button>
+                </fieldset>
+            </td>
+            <td>
+                <canvas id="paint" width="256" height="256" style="border: 5px solid #000000;"></canvas>
+            </td>
+            </tr>
+        </table></p>
+        <fieldset id="colorset">
+        <table>
+        <tr>
+            <td><label>Line Width</label></td>
+            <td><button id="pixel_plus" type="button" onclick="add_pixel()" style="width: 25px;">+</button></td>
+            <td><button id="pixel_minus" type="button" onclick="reduce_pixel()" style="width: 25px;">-</button></td>
+        </tr>
+        </table>
+        <button id="save" onclick="save()">Save</button>
+        </fieldset>
+        <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+        <script src=" {{ url_for('static', filename='script.js') }}"></script>
+{% endblock %}
