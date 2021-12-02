@@ -7,6 +7,7 @@ import struct
 from struct import unpack
 from torch.utils.data import Dataset
 import matplotlib.pyplot as plt
+from PIL import Image, ImageDraw
 
 FILTER_WINDOW = 3
 DEGREE = 3
@@ -17,27 +18,48 @@ class Drawing_Dataset(Dataset):
         self.classes = ["book", "computer", "face"]
         class_data = [[]]*len(self.classes)
         for i in range(len(self.classes)):
-            for drawing in self.unpack_drawings(f"Data/full_binary_{self.classes[i]}.bin"):
+            for j, drawing in enumerate(self.unpack_drawings(f"Data/full_binary_{self.classes[i]}.bin")):
+                if j > 10000:
+                    break
                 if drawing['recognized']:
+                    print(f"{self.classes[i]}: {j}", end = '\r')
                     im = drawing['image']
+                    im = im[..., np.newaxis]
+                    # cv2.imshow("", im)
+                    # cv2.waitKey(0)
 
-                    class_data[i].append(im)
+                    # label = np.zeros((len(self.classes)))
+                    # label[i] = 1
 
-    def drawing_to_np(self, drawing, shape=(256, 256)):
-        # evaluates the drawing array
-        fig, ax = plt.subplots()
-        # Close figure so it won't get displayed while transforming the set
-        plt.close(fig)
-        for x,y in drawing:
-            ax.plot(x, y, marker='.')
-            ax.axis('off')
-        fig.canvas.draw()
-        # Convert images to numpy array
-        np_drawing = np.array(fig.canvas.renderer._renderer)
-        # If you want to take only one channel, you can try somethin like:
-        np_drawing = np_drawing[:, :, 1]
-        np_drawing = np.invert(np_drawing)
-        return cv2.resize(np_drawing, shape) # Resize array
+                    class_data[i].append((im, i))
+            print()
+
+        max_len = max(len(c) for c in class_data)
+        print(max_len)
+        class_data = [class_data[i][:max_len] for i in range(len(self.classes))]
+
+        for c in class_data:
+            random.seed(213123)
+            random.shuffle(c)
+            if train:
+                self.data += c[:int(.8*len(c))]
+            else:
+                self.data += c[int(.8*len(c)):]
+
+        print(len(self.data))
+
+    def drawing_to_np(self, drawing):
+        polylines = [list(zip(polyline[0], polyline[1])) for polyline in drawing]
+        pil_img = Image.new("L", (256, 256), 0)
+        # get a drawing context
+        d = ImageDraw.Draw(pil_img)
+
+        for polyline in polylines:
+            d.line(polyline, fill=255, width=3)
+
+        np_img = np.array(pil_img)
+
+        return cv2.resize(np_img, (64,64))
 
     def unpack_drawing(self, file_handle):
         key_id, = unpack('Q', file_handle.read(8))
