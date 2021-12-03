@@ -41,7 +41,7 @@ function outline(){
 }
 
 function reset(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, 0, width, height);
     canvas_data = { "pencil": [], "eraser": [] }
 }
 

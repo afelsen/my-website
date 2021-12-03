@@ -1,16 +1,18 @@
 #toolset {
     width     : 70px;
-    height    : 440px;
+    height    : 330px;
     position  : absolute;
     left      : 0px;
-    top       : 50px;
-    background: #35d128;
+    top       : 175px;
+    background: #333333;
 }
 
 #paint {
     position  : absolute;
     left      : 130px;
-    top       : 50px;
+    top       : 175px;
+    width: 350px;
+    height: 350px;
 }
 
 #colorset {
@@ -18,6 +20,7 @@
     left      : 0px;
     top       : 525px;
     width     : 860px;
+    border: 0px
 }
 
 #title {
@@ -26,31 +29,31 @@
 }
 
 #penciltool {
-    background: #358128;
+    background: #555555;
     color     : #f3f3f3;
     width     : 80px;
     height    : 25px;
-    border    : 1px solid #33842a;
+    border    : 0px solid #444444;
     border-radius: 25%;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
 }
 
 #erasertool {
-    background: #358128;
+    background: #555555;
     color     : #f3f3f3;
     width     : 80px;
     height    : 25px;
-    border    : 1px solid #33842a;
+    border    : 1px solid #444444;
     border-radius: 25%;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
 }
 
 #resettool {
-    background: #358128;
+    background: #555555;
     color     : #f3f3f3;
     width     : 80px;
     height    : 25px;
-    border    : 1px solid #33842a;
+    border    : 1px solid #444444;
     border-radius: 25%;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
 }
