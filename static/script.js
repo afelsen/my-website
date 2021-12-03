@@ -7,7 +7,7 @@ ctx.fillRect(0, 0, width, height);
 
 var curX, curY, prevX, prevY;
 var hold = false;
-ctx.lineWidth = 2;
+ctx.lineWidth = 3;
 var fill_value = true;
 var stroke_value = false;
 var canvas_data = {"pencil": [], "eraser": []}
@@ -127,7 +127,11 @@ function eraser(){
 function save(){
     var data = JSON.stringify(canvas_data);
     var image = canvas.toDataURL();
-
+    console.log("test");
     $.post("/", { save_cdata: data, save_image: image });
-    alert(filename + " saved");
+    $.get("/getpythondata", function(data) {
+        console.log($.parseJSON(data))
+        var pred = $.parseJSON(data)
+        document.getElementById("prediction").innerHTML = "Prediction: " + pred["prediction"];
+    })
 }

@@ -8,9 +8,15 @@ from io import BytesIO
 from PIL import Image
 import numpy as np
 import cv2
+from auxiliary import *
 
 app = Flask(__name__)
 
+pythondata = {"prediction": "None"}
+
+@app.route('/getpythondata')
+def get_python_data():
+    return json.dumps(pythondata)
 
 @app.route('/', methods=['GET', 'POST'])
 def paintapp():
@@ -29,7 +35,15 @@ def paintapp():
         img = Image.open(BytesIO(img_bytes))
         img  = np.array(img)
         cv2.imwrite("static/test.png", img)
-        return redirect(url_for('save'))
+
+        prediction = get_prediction(img)
+
+        pythondata["prediction"] =  prediction
+        print(json.dumps(pythondata))
+
+
+        return render_template("base.html")
+
 
 
 @app.route('/save', methods=['GET', 'POST'])

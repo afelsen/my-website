@@ -2,6 +2,7 @@ from Dataset import Drawing_Dataset
 from CNN import CNN
 import torch
 import torch.optim as optim
+import cv2
 
 BATCH_SIZE = 128
 NUM_EPOCHS = 10
@@ -54,6 +55,11 @@ def test(net, testloader, device):
 
         outputs = net(inputs)
 
+        # print(torch.argmax(outputs[0]), labels[0])
+        # cv2.imshow("", inputs.cpu().numpy()[0,0,:,:])
+        # cv2.waitKey(0)
+
+
         for i in range(len(outputs)):
             if torch.argmax(outputs[i]) == labels[i]:
                 correct += 1
@@ -72,5 +78,5 @@ if __name__ == "__main__":
 
     trainloader = torch.utils.data.DataLoader(train_data, batch_size = BATCH_SIZE, shuffle = True, num_workers = 1, persistent_workers = True)
     testloader = torch.utils.data.DataLoader(test_data, batch_size = BATCH_SIZE, shuffle = False, num_workers = 1, persistent_workers = True)
-    train(net, trainloader, device)
+    # train(net, trainloader, device)
     test(net, testloader, device)

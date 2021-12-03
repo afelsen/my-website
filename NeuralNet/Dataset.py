@@ -25,8 +25,8 @@ class Drawing_Dataset(Dataset):
                     print(f"{self.classes[i]}: {j}", end = '\r')
                     im = drawing['image']
                     im = im[..., np.newaxis]
-                    # cv2.imshow("", im)
-                    # cv2.waitKey(0)
+
+
 
                     # label = np.zeros((len(self.classes)))
                     # label[i] = 1

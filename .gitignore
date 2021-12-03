@@ -1,2 +1,4 @@
 Paintapp-Flask-PostgreSQL-master/*
 NeuralNet/Data/*
+__pycache__/*
+*.pyc
