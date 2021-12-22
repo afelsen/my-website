@@ -10,9 +10,10 @@ import numpy as np
 import cv2
 from auxiliary import *
 
+#set FLASK_ENV=development
 app = Flask(__name__)
 
-pythondata = {"prediction": "None"}
+pythondata = {"prediction": "None", "probabilities": "None"}
 
 @app.route('/getpythondata')
 def get_python_data():
@@ -36,9 +37,12 @@ def paintapp():
         img  = np.array(img)
         cv2.imwrite("static/test.png", img)
 
-        prediction = get_prediction(img)
+        prediction, probabilities = get_prediction(img)
 
         pythondata["prediction"] =  prediction
+        pythondata["probabilities"] = probabilities
+
+
         print(json.dumps(pythondata))
 
 
@@ -67,6 +71,37 @@ def search():
         files = cur.fetchall()
         conn.close()
         return render_template("search.html", files=files, filename=filename)
+
+
+
+@app.route('/education')
+def education():
+    return render_template('education.html')
+@app.route('/research_internships')
+def research_internships():
+    return render_template('research_internships.html')
+@app.route('/projects')
+def projects():
+    return render_template('projects.html')
+@app.route('/about')
+def about():
+    print("ABOUT")
+    return render_template('about.html')
+
+# @app.route('/education')
+@app.route('/go_to_prediction', methods=['GET', 'POST'])
+def go_to_prediction():
+    print("TESTING")
+    print(pythondata["prediction"])
+    if pythondata["prediction"] == "Book":
+        return render_template('education.html')
+    elif pythondata["prediction"] == "Face":
+        return render_template('about.html')
+    elif pythondata["prediction"] == "Computer":
+        return render_template('projects.html')
+
+    return render_template('paint.html')
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

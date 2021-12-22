@@ -1,0 +1,59 @@
+#toolset {
+    width     : 70px;
+    height    : 330px;
+    position  : relative;
+    left      : 0px;
+    /* top       : 175px; */
+    background: #333333;
+}
+
+#paint {
+    position  : relative;
+    /* left      : 130px; */
+    /* top       : 175px; */
+    width: 350px;
+    height: 350px;
+}
+
+#colorset {
+    position  : relative;
+    left      : 0px;
+    /* top       : 525px; */
+    width     : 860px;
+    border: 0px
+}
+
+#title {
+    position  : relative:
+    left      : 500px;
+}
+
+#penciltool {
+    background: #555555;
+    color     : #f3f3f3;
+    width     : 80px;
+    height    : 25px;
+    border    : 0px solid #444444;
+    border-radius: 25%;
+    box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
+}
+
+#erasertool {
+    background: #555555;
+    color     : #f3f3f3;
+    width     : 80px;
+    height    : 25px;
+    border    : 1px solid #444444;
+    border-radius: 25%;
+    box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
+}
+
+#resettool {
+    background: #555555;
+    color     : #f3f3f3;
+    width     : 80px;
+    height    : 25px;
+    border    : 1px solid #444444;
+    border-radius: 25%;
+    box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
+}

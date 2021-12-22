@@ -3,6 +3,7 @@ from CNN import CNN
 import torch
 import torch.optim as optim
 import cv2
+from torchvision import transforms
 
 BATCH_SIZE = 128
 NUM_EPOCHS = 10
@@ -68,8 +69,16 @@ def test(net, testloader, device):
     print(f"Accuracy: {correct/total}")
 
 if __name__ == "__main__":
-    train_data = Drawing_Dataset(train = True)
-    test_data = Drawing_Dataset(train = False)
+    transform_data = transforms.Compose([
+        transforms.RandomHorizontalFlip(),
+        # transforms.RandomVerticalFlip(),
+        #transforms.RandomResizedCrop(556, scale=(0.7, 1.0), ratio=(0.75, 1.3333333333333333), interpolation=2),
+        # transforms.ColorJitter(brightness=0.1, contrast=0.1, saturation = 0.1),
+        transforms.ToTensor(),
+    ])
+
+    train_data = Drawing_Dataset(train = True, transform = transform_data)
+    test_data = Drawing_Dataset(train = False, transform = None)
     net = CNN()
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -78,5 +87,5 @@ if __name__ == "__main__":
 
     trainloader = torch.utils.data.DataLoader(train_data, batch_size = BATCH_SIZE, shuffle = True, num_workers = 1, persistent_workers = True)
     testloader = torch.utils.data.DataLoader(test_data, batch_size = BATCH_SIZE, shuffle = False, num_workers = 1, persistent_workers = True)
-    # train(net, trainloader, device)
+    train(net, trainloader, device)
     test(net, testloader, device)

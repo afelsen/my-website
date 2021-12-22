@@ -13,20 +13,18 @@ FILTER_WINDOW = 3
 DEGREE = 3
 
 class Drawing_Dataset(Dataset):
-    def __init__(self, train = False):
+    def __init__(self, train = False, transform = None):
+        self.transform = transform
         self.data = []
         self.classes = ["book", "computer", "face"]
         class_data = [[]]*len(self.classes)
         for i in range(len(self.classes)):
             for j, drawing in enumerate(self.unpack_drawings(f"Data/full_binary_{self.classes[i]}.bin")):
-                if j > 10000:
-                    break
+                # if j > 10000:
+                #     break
                 if drawing['recognized']:
                     print(f"{self.classes[i]}: {j}", end = '\r')
                     im = drawing['image']
-                    im = im[..., np.newaxis]
-
-
 
                     # label = np.zeros((len(self.classes)))
                     # label[i] = 1
@@ -94,7 +92,16 @@ class Drawing_Dataset(Dataset):
                     break
 
     def __getitem__(self, idx):
-        return self.data[idx]
+        img = self.data[idx][0]
+        img = Image.fromarray(img)
+        if self.transform is not None:
+            img = self.transform(img)
+            img = img.permute(1,2,0)
+            img = np.array(img)
+        else:
+            img = np.array(img)
+            img = img[..., np.newaxis]
+        return self.data[idx][0][..., np.newaxis], self.data[idx][1]
 
     def __len__(self):
         return len(self.data)

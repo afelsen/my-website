@@ -11,7 +11,7 @@ def get_prediction(img):
     net = net.double()
     checkpoint = torch.load(MODEL_PATH)
     net.load_state_dict(checkpoint['model_state_dict'])
-    classes = ["book", "computer", "face"]
+    classes = ["Book", "Computer", "Face"]
 
     img = cv2.resize(img, (64,64))
 
@@ -31,5 +31,12 @@ def get_prediction(img):
     print(classes[index])
     print(outputs)
 
+    probs = ""
+    for i in range(len(outputs[0])):
+        if i == index:
+            probs += "<b>"
+        probs += f"{classes[i]}: {outputs[0][i]:.2f} "
+        if i == index:
+            probs += "</b>"
 
-    return classes[index]
+    return classes[index], probs
