@@ -29,17 +29,30 @@ function load_arrows() {
             if (i < nodes.length - 1){
                 var colB = nodes[i+1].children
                 for (var k=0; k < colB.length; k++){
-                    
+
+                    var rng = Math.random();
+                    var start = colA[j].children[0].children[0];
+                    var end = colB[k].children[0].children[0];
+                    if (rng < .5){
+                        start = colB[k].children[0].children[0];
+                        end = colA[j].children[0].children[0];
+                    }
 
                     var line = new LeaderLine(
-                        colA[j].children[0].children[0],
-                        colB[k].children[0].children[0],
+                        start,
+                        end,
                         {dash: {animation: true}, hide: true}                    
                     );
 
                     line.path = "straight";
                     line.color = "black";
-                    line.setOptions({startSocket: 'right', endSocket: 'left'});
+
+                    if (rng < .5){
+                        line.setOptions({startSocket: 'left', endSocket: 'right'});
+                    }
+                    else {
+                        line.setOptions({startSocket: 'right', endSocket: 'left'});
+                    }
                     
                     line.setOptions({
                         startPlugColor: '#1a6be0',

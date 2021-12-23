@@ -50,8 +50,9 @@ function reset(){
 
 function pencil(){
 
+    document.getElementById("pencil_icon_img").src="./static/images/pencil_1_a.png";
+
     canvas.onmousedown = function(e){
-        console.log(e.pageY, canvas.offsetTop);
         curX = e.pageX - canvas.offsetLeft;
         curY = e.pageY - canvas.offsetTop;
         hold = true;
@@ -91,6 +92,8 @@ function pencil(){
 // eraser tool
 
 function eraser(){
+
+    document.getElementById("pencil_icon_img").src="./static/images/eraser_1_a.png";
 
     canvas.onmousedown = function(e){
         curX = e.pageX - canvas.offsetLeft;

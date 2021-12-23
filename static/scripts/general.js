@@ -1,29 +1,62 @@
 
-let navLinks = document.querySelectorAll("a");
+let nodes = document.querySelectorAll(".node");
+let links = document.querySelectorAll("a");
 var mouseCursor = document.querySelector(".cursor");
 
-
-console.log(navLinks);
-
+var pencil_icon = document.querySelector("#pencil_icon");
+var canvas = document.querySelector("#paint")
 window.addEventListener("mousemove", cursor);
 
+var is_pencil = false;
+
 function cursor(e){
-    mouseCursor.style.top = e.pageY + "px";
-    mouseCursor.style.left = e.pageX + "px"; 
+    if (!is_pencil){
+      mouseCursor.style.top = e.pageY + "px";
+      mouseCursor.style.left = e.pageX + "px"; 
+    }
+    else {
+      pencil_icon.style.top = e.pageY + "px";
+      pencil_icon.style.left = e.pageX + "px"; 
+    }
 }
 
-navLinks.forEach(link => {
+nodes.forEach(link => {
     
     link.addEventListener('mouseleave', () => {
-        mouseCursor.classList.remove('link-grow');
+      mouseCursor.classList.remove('pulsating-circle');
+      mouseCursor.classList.remove('link-grow-invert');
     });
     link.addEventListener('mouseover', () => {
-        console.log("test");
-        mouseCursor.classList.add('link-grow');
+        mouseCursor.classList.add('pulsating-circle');
+        mouseCursor.classList.add('link-grow-invert');
     });
 
 })
 
+links.forEach(link => {
+    
+  link.addEventListener('mouseleave', () => {
+    mouseCursor.classList.remove('pulsating-circle');
+    mouseCursor.classList.remove('link-grow');
+  });
+  link.addEventListener('mouseover', () => {
+    mouseCursor.classList.add('pulsating-circle');
+    mouseCursor.classList.add('link-grow');
+  });
+
+})
+
+
+canvas.addEventListener('mouseleave', () => {
+  is_pencil = false;
+  pencil_icon.style.visibility = "hidden";
+  mouseCursor.style.visibility = "visible";
+});
+canvas.addEventListener('mouseover', () => {
+  is_pencil = true;
+  pencil_icon.style.visibility = "visible";
+  mouseCursor.style.visibility = "hidden";
+});
 
 
 

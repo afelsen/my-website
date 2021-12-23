@@ -95,17 +95,18 @@
         
           <div class="row">
             <h2 id="title">Paint App</h2>
+            <div id="pencil_icon"><img id="pencil_icon_img" src = "./static/images/pencil_1_a.png"></img></div>
             <p><table>
                 <tr>
                 <td>
                     <fieldset id="toolset">
                     <br>
                     <br>
-                    <button id="penciltool" type="button" style="height: 50px; width: 50px;" onclick="pencil()"><i class="fa fa-pencil"></i></button>
+                    <button id="penciltool" type="button" style="height: 50px; width: 50px;" onclick="pencil()"><img style="height: 35px; width: 35px;" src = ./static/images/pencil_1_a.png></img></button>
                     <br>
                     <br>
                     <br>
-                    <button id="erasertool" type="button" style="height: 50px; width: 50px;" onclick="eraser()"><i class="fa fa-eraser"></i></button>
+                    <button id="erasertool" type="button" style="height: 50px; width: 50px;" onclick="eraser()"><img style="height: 35px; width: 35px;" src = ./static/images/eraser_1_a.png></img></button>
                     <br>
                     <br>
                     <br>
@@ -113,13 +114,13 @@
                     </fieldset>
                 </td>
                 <td>
-                    <canvas id="paint" width="350" height="350" style="border: 1px solid #ffffff;"></canvas>
+                    <canvas id="paint" width="512" height="512" style="border: 1px solid #ffffff;"></canvas>
                 </td>
                 </tr>
             </table></p>
               <fieldset id="colorset">
                 <p id="prediction">Prediction: {{prediction}}</p>
-                <a href="{{url_for('go_to_prediction')}}"><button id="GO!">GO!</button></a>
+                <a href="{{url_for('go_to_prediction')}}"><button id="go"><h3 id="gotext">Navigate!</h3></button></a>
               </fieldset>
             </p>
     
