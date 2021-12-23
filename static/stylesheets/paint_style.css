@@ -13,6 +13,7 @@
     /* top       : 175px; */
     width: 350px;
     height: 350px;
+    border: 2px solid #ffffff;
 }
 
 #colorset {

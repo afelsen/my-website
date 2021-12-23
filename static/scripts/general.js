@@ -1,7 +1,8 @@
 
+let navLinks = document.querySelectorAll("a");
 var mouseCursor = document.querySelector(".cursor");
 
-let navLinks = document.querySelectorAll("a");
+
 console.log(navLinks);
 
 window.addEventListener("mousemove", cursor);
@@ -12,10 +13,12 @@ function cursor(e){
 }
 
 navLinks.forEach(link => {
+    
     link.addEventListener('mouseleave', () => {
         mouseCursor.classList.remove('link-grow');
     });
     link.addEventListener('mouseover', () => {
+        console.log("test");
         mouseCursor.classList.add('link-grow');
     });
 

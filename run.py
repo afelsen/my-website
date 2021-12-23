@@ -35,7 +35,7 @@ def paintapp():
         img_bytes = base64.b64decode(canvas_image[offset:])
         img = Image.open(BytesIO(img_bytes))
         img  = np.array(img)
-        cv2.imwrite("static/test.png", img)
+        
 
         prediction, probabilities = get_prediction(img)
 

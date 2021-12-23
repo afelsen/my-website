@@ -41,6 +41,7 @@ function outline(){
 }
 
 function reset(){
+    ctx.fillStyle = "black";
     ctx.fillRect(0, 0, width, height);
     canvas_data = { "pencil": [], "eraser": [] }
 }
@@ -50,8 +51,9 @@ function reset(){
 function pencil(){
 
     canvas.onmousedown = function(e){
-        curX = e.clientX - canvas.offsetLeft;
-        curY = e.clientY - canvas.offsetTop;
+        console.log(e.pageY, canvas.offsetTop);
+        curX = e.pageX - canvas.offsetLeft;
+        curY = e.pageY - canvas.offsetTop;
         hold = true;
 
         prevX = curX;
@@ -62,8 +64,8 @@ function pencil(){
 
     canvas.onmousemove = function(e){
         if(hold){
-            curX = e.clientX - canvas.offsetLeft;
-            curY = e.clientY - canvas.offsetTop;
+            curX = e.pageX - canvas.offsetLeft;
+            curY = e.pageY - canvas.offsetTop;
             draw();
         }
     };
@@ -82,7 +84,7 @@ function pencil(){
         ctx.strokeStyle = "#ffffff";
         ctx.stroke();
         ctx.lineWidth = 5;
-        canvas_data.pencil.push({ "startx": prevX, "starty": prevY, "endx": curX, "endy": curY, "thick": ctx.lineWidth, "color": "#000000" });
+        canvas_data.pencil.push({ "startx": prevX, "starty": prevY, "endx": curX, "endy": curY, "thick": ctx.lineWidth, "color": "#ffffff" });
     }
 }
 
@@ -91,8 +93,8 @@ function pencil(){
 function eraser(){
 
     canvas.onmousedown = function(e){
-        curX = e.clientX - canvas.offsetLeft;
-        curY = e.clientY - canvas.offsetTop;
+        curX = e.pageX - canvas.offsetLeft;
+        curY = e.pageY - canvas.offsetTop;
         hold = true;
 
         prevX = curX;
@@ -103,8 +105,8 @@ function eraser(){
 
     canvas.onmousemove = function(e){
         if(hold){
-            curX = e.clientX - canvas.offsetLeft;
-            curY = e.clientY - canvas.offsetTop;
+            curX = e.pageX - canvas.offsetLeft;
+            curY = e.pageY - canvas.offsetTop;
             draw();
         }
     };

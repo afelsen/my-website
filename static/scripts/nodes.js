@@ -44,6 +44,7 @@ function load_arrows() {
                     line.setOptions({
                         startPlugColor: '#1a6be0',
                         endPlugColor: '#1efdaa',
+                        endPlug: "behind",
                         gradient: true
                     })
                     line.setOptions({dropShadow: {color: 'blue', dx: 0, dy: 0}});
