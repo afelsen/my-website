@@ -50,7 +50,7 @@ function reset(){
 
 function pencil(){
 
-    document.getElementById("pencil_icon_img").src="./static/images/pencil_1_a.png";
+    document.getElementById("pencil_icon_img").src="./static/images/icons/pencil_1_color.png";
 
     canvas.onmousedown = function(e){
         curX = e.pageX - canvas.offsetLeft;
@@ -93,7 +93,7 @@ function pencil(){
 
 function eraser(){
 
-    document.getElementById("pencil_icon_img").src="./static/images/eraser_1_a.png";
+    document.getElementById("pencil_icon_img").src="./static/images/icons/eraser_color.png";
 
     canvas.onmousedown = function(e){
         curX = e.pageX - canvas.offsetLeft;
@@ -152,7 +152,7 @@ function get_python_data(){
             var prob = probs[name];
             
             list_elements[i].setAttribute("data-pos", o + 1);
-            list_elements[i].children[0].children[1].innerHTML = Math.round(prob * 100) / 100;
+            list_elements[i].children[0].children[2].innerHTML = Math.round(prob * 100) / 100;
             console.log(i)
             console.log(list_elements[i]);
         }

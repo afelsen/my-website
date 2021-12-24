@@ -95,18 +95,18 @@
         
           <div class="row">
             <h2 id="title">Paint App</h2>
-            <div id="pencil_icon"><img id="pencil_icon_img" src = "./static/images/pencil_1_a.png"></img></div>
+            <div id="pencil_icon"><img id="pencil_icon_img" src = "./static/images/icons/pencil_1_color.png"></img></div>
             <p><table>
                 <tr>
                 <td>
                     <fieldset id="toolset">
                     <br>
                     <br>
-                    <button id="penciltool" type="button" style="height: 50px; width: 50px;" onclick="pencil()"><img style="height: 35px; width: 35px;" src = ./static/images/pencil_1_a.png></img></button>
+                    <button id="penciltool" type="button" style="height: 50px; width: 50px;" onclick="pencil()"><img style="height: 35px; width: 35px;" src = ./static/images/icons/pencil_1_color.png></img></button>
                     <br>
                     <br>
                     <br>
-                    <button id="erasertool" type="button" style="height: 50px; width: 50px;" onclick="eraser()"><img style="height: 35px; width: 35px;" src = ./static/images/eraser_1_a.png></img></button>
+                    <button id="erasertool" type="button" style="height: 50px; width: 50px;" onclick="eraser()"><img style="height: 35px; width: 35px;" src = ./static/images/icons/eraser_color.png></img></button>
                     <br>
                     <br>
                     <br>
@@ -116,27 +116,28 @@
                 <td>
                     <canvas id="paint" width="512" height="512" style="border: 1px solid #ffffff;"></canvas>
                 </td>
-                </tr>
-            </table></p>
-              <fieldset id="colorset">
+                <td>
+                  <fieldset id="colorset">
                 <p id="prediction">Prediction: {{prediction}}</p>
                 <ul id="probabilities">
                   <li class="education" data-pos="1" >
                     <div class="prob-item-wrapper"> 
-                      <div class="prob-item">
+                      <img src = ./static/images/icons/book_1_color.png class="prob-icon"></img>
+                      <div class="prob-item-a">
                         Book - Education: 
                       </div>
-                      <div class="prob-item">
+                      <div class="prob-item-b">
                         
                       </div>
                     </div>
                   </li>
                   <li class="research" data-pos="2" >
                     <div class="prob-item-wrapper"> 
-                      <div class="prob-item">
+                      <img src = ./static/images/icons/brain_2_color.png class="prob-icon"></img>
+                      <div class="prob-item-a">
                         Brain - Research and Internships: 
                       </div>
-                      <div class="prob-item">
+                      <div class="prob-item-b">
 
                       </div>
                     </div>
@@ -144,30 +145,33 @@
                   <!-- <li class="research" data-pos="2" >Brain - Research:</li> -->
                   <li class="projects" data-pos="3" >
                     <div class="prob-item-wrapper"> 
-                      <div class="prob-item">
+                      <img src = ./static/images/icons/computer_1_color.png class="prob-icon"></img>
+                      <div class="prob-item-a">
                         Computer - Projects: 
                       </div>
-                      <div class="prob-item">
+                      <div class="prob-item-b">
 
                       </div>
                     </div>
                   </li>
                   <li class="about" data-pos="4" >
                     <div class="prob-item-wrapper"> 
-                      <div class="prob-item">
+                      <img src = ./static/images/icons/face_1_color.png class="prob-icon"></img>
+                      <div class="prob-item-a">
                         Face - About Me:
                       </div>
-                      <div class="prob-item">
+                      <div class="prob-item-b">
 
                       </div>
                     </div>
                   </li>
                   <li class="contact" data-pos="5" >
                     <div class="prob-item-wrapper"> 
-                      <div class="prob-item">
+                      <img src = ./static/images/icons/envelope_1_color.png class="prob-icon"></img>
+                      <div class="prob-item-a">
                         Envelope - Contact Me:
                       </div>
-                      <div class="prob-item">
+                      <div class="prob-item-b">
 
                       </div>
                     </div>
@@ -175,6 +179,10 @@
                 </ul>
                 <a href="{{url_for('go_to_prediction')}}"><button id="go"><h3 id="gotext">Navigate!</h3></button></a>
               </fieldset>
+                </td>
+                </tr>
+            </table></p>
+              
             </p>
     
           </div>
