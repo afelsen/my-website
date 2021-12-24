@@ -1,6 +1,5 @@
-
 let nodes = document.querySelectorAll(".node");
-let links = document.querySelectorAll("a");
+let links = document.querySelectorAll("button");
 var mouseCursor = document.querySelector(".cursor");
 
 var pencil_icon = document.querySelector("#pencil_icon");

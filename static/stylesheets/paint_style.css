@@ -112,3 +112,48 @@
 
     visibility: hidden;
 }
+
+
+ul {
+    list-style: none;
+    position: relative;
+    height: 240px;
+}
+  
+  li {
+    width: 100%;
+    line-height: 2em;
+    text-align: center;
+    transition: all 0.9s ease-out;
+    position: absolute;
+  
+    left: 0;
+  }
+
+  [data-pos="1"] {
+    top: 0;
+  }
+  
+  [data-pos="2"] {
+    top: 30px;
+  }
+  
+  [data-pos="3"] {
+    top: 60px;
+  }
+  
+  [data-pos="4"] {
+    top: 90px;
+  }
+  [data-pos="5"] {
+    top: 120px;
+  }
+
+.prob-item-wrapper {
+    width:100%;
+    display:flex;
+}
+
+.prob-item {
+    width:50%;
+} 

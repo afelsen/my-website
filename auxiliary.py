@@ -2,6 +2,8 @@ import numpy as np
 import cv2
 import torch
 from NeuralNet.CNN import CNN
+from torch.nn import Softmax
+
 
 MODEL_PATH = "./NeuralNet/Models/test.pth"
 
@@ -18,7 +20,7 @@ def get_prediction(img):
     net = net.double()
     checkpoint = torch.load(MODEL_PATH)
     net.load_state_dict(checkpoint['model_state_dict'])
-    classes = ["Book", "Computer", "Face"]
+    classes = ["Book", "Brain", "Computer", "Face", "Envelope"]
 
 
     # crop image based on bounding rectangle
@@ -47,15 +49,25 @@ def get_prediction(img):
 
     outputs = net(img.double())
     index = torch.argmax(outputs[0])
+    
+    softmax = Softmax(dim=1)
+    outputs = softmax(outputs)
+
     print(classes[index])
     print(outputs)
 
-    probs = ""
-    for i in range(len(outputs[0])):
-        if i == index:
-            probs += "<b>"
-        probs += f"{classes[i]}: {outputs[0][i]:.2f} "
-        if i == index:
-            probs += "</b>"
+    outputs = outputs[0].tolist()
 
-    return classes[index], probs
+    return classes[index], index, outputs
+
+def get_probabilities_string(outputs, index):
+    classes = ["Book", "Brain", "Computer", "Face", "Envelope"]
+    probs_string = ""
+    for i in range(len(outputs)):
+        if i == index:
+            probs_string += "<b>"
+        probs_string += f"{classes[i]}: {outputs[i]:.2f} "
+        if i == index:
+            probs_string += "</b>"
+
+    return probs_string

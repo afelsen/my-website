@@ -8,7 +8,7 @@
     
     <body onload="pencil()">
 
-        <h1 id = "welcome" class = "revealup"> Welcome! </h1>
+        <h1 id = "welcome" class = "revealup" style="font-size: 75"> Welcome! </h1>
 
         <div class="row">
           <div class="column three_col">&nbsp</div>
@@ -120,6 +120,59 @@
             </table></p>
               <fieldset id="colorset">
                 <p id="prediction">Prediction: {{prediction}}</p>
+                <ul id="probabilities">
+                  <li class="education" data-pos="1" >
+                    <div class="prob-item-wrapper"> 
+                      <div class="prob-item">
+                        Book - Education: 
+                      </div>
+                      <div class="prob-item">
+                        
+                      </div>
+                    </div>
+                  </li>
+                  <li class="research" data-pos="2" >
+                    <div class="prob-item-wrapper"> 
+                      <div class="prob-item">
+                        Brain - Research and Internships: 
+                      </div>
+                      <div class="prob-item">
+
+                      </div>
+                    </div>
+                  </li>
+                  <!-- <li class="research" data-pos="2" >Brain - Research:</li> -->
+                  <li class="projects" data-pos="3" >
+                    <div class="prob-item-wrapper"> 
+                      <div class="prob-item">
+                        Computer - Projects: 
+                      </div>
+                      <div class="prob-item">
+
+                      </div>
+                    </div>
+                  </li>
+                  <li class="about" data-pos="4" >
+                    <div class="prob-item-wrapper"> 
+                      <div class="prob-item">
+                        Face - About Me:
+                      </div>
+                      <div class="prob-item">
+
+                      </div>
+                    </div>
+                  </li>
+                  <li class="contact" data-pos="5" >
+                    <div class="prob-item-wrapper"> 
+                      <div class="prob-item">
+                        Envelope - Contact Me:
+                      </div>
+                      <div class="prob-item">
+
+                      </div>
+                    </div>
+                  </li>
+                </ul>
                 <a href="{{url_for('go_to_prediction')}}"><button id="go"><h3 id="gotext">Navigate!</h3></button></a>
               </fieldset>
             </p>

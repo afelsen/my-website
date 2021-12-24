@@ -13,7 +13,7 @@ from auxiliary import *
 #set FLASK_ENV=development
 app = Flask(__name__)
 
-pythondata = {"prediction": "None", "probabilities": "None"}
+pythondata = {"prediction": "None", "probabilities-string": "None", "probabilities": [0,0,0], "order": [0,1,2]}
 
 @app.route('/getpythondata')
 def get_python_data():
@@ -37,14 +37,29 @@ def paintapp():
         img  = np.array(img)
         
 
-        prediction, probabilities = get_prediction(img)
+        prediction, index, outputs = get_prediction(img)
+        probabilities_string = get_probabilities_string(outputs, index)
 
         pythondata["prediction"] =  prediction
-        pythondata["probabilities"] = probabilities
+        pythondata["probabilities_string"] = probabilities_string
 
+        print(outputs)
+        orders_list = np.argsort(-1*np.array(outputs)).tolist()
+        print(outputs)
+        print(orders_list)
+        probs_list = outputs
 
-        print(json.dumps(pythondata))
+        orders_map = {}
+        probs_map = {}
+        labels = ["education", "research", "projects", "about", "contact"]
+        for i in range(len(labels)):
+            orders_map[labels[i]] = orders_list.index(i)
+            probs_map[labels[i]] = probs_list[i]
 
+            
+
+        pythondata["probabilities"] = probs_map
+        pythondata["order"] = orders_map
 
         return render_template("base.html")
 
