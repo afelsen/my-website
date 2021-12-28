@@ -1,3 +1,43 @@
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav h1 {
+  float: left;
+  color: #ffffff;
+  text-align: center;
+  margin-left: 20px;
+  /* padding: 14px 16px; */
+  font-size: 23px;
+}
+
+.topnav-right {
+  float: right;
+}
+
+.topnav a {
+  float: left;
+  color: #ffffff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 25px;
+
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #1cb5c5;
+  color: white;
+}
+
+
+
 .four_col {
   float: left;
   width: 25.00%;
@@ -21,11 +61,6 @@
   display: -ms-flex; display: -webkit-flex; display: flex;
 }
 
-h1 {
-  font-size: 100;
-  margin: auto;
-  text-align: center;
-}
 
 p {
   text-align: center;
@@ -45,6 +80,7 @@ body {
   opacity: 1;
   animation: floatup 2s;
   animation-timing-function: ease;
+  text-align: center;
 }
 
 
@@ -88,7 +124,7 @@ a {
 
 .link-grow-invert {
   transform: scale(1.5);
-  backdrop-filter: invert() drop-shadow(4px 4px 10px rgb(0, 0, 0));  
+  backdrop-filter: invert() drop-shadow(4px 4px 10px rgb(0, 0, 0));
   /* background:rgb(255, 255, 255); */
 }
 
@@ -112,11 +148,11 @@ a {
     background-color: #01a4e9;
     animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
   }
-  
+
 /* .pulsating-circle::after {
     content: '';
     position: absolute;
-    left: 0; 
+    left: 0;
     top: 0;
     display: block;
     width: 100%;
@@ -135,7 +171,7 @@ a {
   }
   80% {
     opacity: 0;
-  } 
+  }
   100% {
     opacity: 0;
     transform: scale(1);
@@ -152,4 +188,62 @@ a {
   100% {
     transform: scale(.8);
   }
+}
+
+
+.button-link {
+  z-index: 10;
+  position: relative;
+  color: white;
+  background-color: black;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 2px solid white;
+  border-radius: 1000px;
+  padding: 10px 20px;
+  margin-left: 40px;
+  margin-top: 10px;
+  box-shadow: 0 2px 5px 0 rgba(3,6,26,0.15);
+  transition: .5s all ease-in-out;
+}
+
+.button-link:hover {
+  cursor: pointer;
+  background: white;
+  color: #1F4141;
+  animation: none;
+}
+
+.button-wiggle {
+  animation: wiggle 4s 2s infinite;
+}
+
+@keyframes wiggle {
+	5%,
+	50% {
+		transform: scale(1);
+	}
+	10% {
+		transform: scale(0.9);
+	}
+	15% {
+		transform: scale(1.15);
+	}
+	20% {
+		transform: scale(1.15) rotate(-5deg);
+	}
+	25% {
+		transform: scale(1.15) rotate(5deg);
+	}
+	30% {
+		transform: scale(1.15) rotate(-3deg);
+	}
+	35% {
+		transform: scale(1.15) rotate(2deg);
+	}
+	40% {
+		transform: scale(1.15) rotate(0);
+	}
 }

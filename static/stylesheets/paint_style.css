@@ -1,10 +1,14 @@
 #toolset {
     width     : 70px;
     height    : 330px;
-    position  : relative;
+    position  : absolute;
     left      : 0px;
+    top: 0px;
+    border: 0px;
+    z-index: 1;
+
+    pointer-events: none;
     /* top       : 175px; */
-    background: #333333;
 }
 
 #paint {
@@ -14,6 +18,7 @@
     width: 512px;
     height: 512px;
     border: 2px solid #ffffff;
+    z-index: 0;
 }
 
 #colorset {
@@ -30,6 +35,7 @@
 }
 
 #penciltool {
+    pointer-events: auto;
     background: #555555;
     color     : #f3f3f3;
     width     : 80px;
@@ -40,6 +46,7 @@
 }
 
 #erasertool {
+    pointer-events: auto;
     background: #555555;
     color     : #f3f3f3;
     width     : 80px;
@@ -50,6 +57,7 @@
 }
 
 #resettool {
+    pointer-events: auto;
     background: #555555;
     color     : #f3f3f3;
     width     : 80px;
@@ -59,7 +67,7 @@
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
 }
 
-#go {
+/* #learnmore {
     margin: 20px auto;
     border: none;
     padding: 5px 22px;
@@ -67,9 +75,10 @@
     position: relative;
     border-radius:50px;
     background: rgba(0, 0, 0, 0)
+    float: right;
 }
 
-#go::before{
+#learnmore::before{
     transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     content: '';
     width: 50%;
@@ -85,16 +94,16 @@
 }
 
 
-#go:hover::before{
+#learnmore:hover::before{
     background: #1cb5c5;
     width: 100%;
 }
 
-#gotext{
+#learnmore-text{
     color:#ffffff;
     mix-blend-mode: luminosity;
     text-shadow: 1px 1px rgb(83, 83, 83);
-}
+} */
 
 #pencil_icon {
     width: 64px;
@@ -119,55 +128,75 @@ ul {
     position: relative;
     height: 500px;
 }
-  
-  li {
-    width: 70%;
-    line-height: 3em;
-    text-align: left;
-    transition: all 0.9s ease-out;
-    position: absolute;
-    background-color: rgb(0, 1, 48);
-    border-radius: 20px;
-    padding: 18px;
-    left: 0;
-  }
 
-  [data-pos="1"] {
-    top: 0;
-    background-color: #1cb5c5;
-  }
-  
-  [data-pos="2"] {
-    top: 100px;
-  }
-  
-  [data-pos="3"] {
-    top: 200px;
-  }
-  
-  [data-pos="4"] {
-    top: 300px;
-  }
-  [data-pos="5"] {
-    top: 400px;
-  }
+li {
+  width: 100%;
+  line-height: 3em;
+  text-align: left;
+  transition: all 0.9s ease-out;
+  position: absolute;
+  background-color: rgb(0, 1, 48);
+  border-radius: 20px;
+  padding: 18px;
+  left: 0;
+}
+
+[data-pos="1"] {
+  top: 0;
+  background-color: #1cb5c5;
+}
+
+[data-pos="2"] {
+  top: 100px;
+}
+
+[data-pos="3"] {
+  top: 200px;
+}
+
+[data-pos="4"] {
+  top: 300px;
+}
+[data-pos="5"] {
+  top: 400px;
+}
 
 .prob-item-wrapper {
-    width:100%;
+    max-width: 100%;
     display:flex;
 }
 
 .prob-item-a {
-    width:70%;
-} 
+    width:80%;
+}
 .prob-item-b {
-    width:30%;
+    width:20%;
     text-align: right;
-} 
+}
 
 .prob-icon {
     padding-right: 50px;
     width: 64px;
     height: 64px;
     /* object-fit: cover; */
-} 
+}
+
+.probabilities-wrapper {
+  width: 512px;
+  margin-right: auto;
+}
+
+.canvas-wrapper {
+  margin-left: auto;
+}
+
+.drawing-table-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.drawing-item {
+  position: relative;
+  float: left;
+}

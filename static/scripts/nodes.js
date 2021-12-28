@@ -9,9 +9,20 @@
 // }
 
 
-
+all_lines = []
 
 window.onload = load_arrows();
+// window.onresize = refresh_arrows();
+window.addEventListener('resize', debounce(refresh_arrows, 150));
+
+
+
+
+function refresh_arrows(){
+  for (var i = 0; i < all_lines.length; i++){
+    all_lines[i].position();
+  }
+}
 
 
 function load_arrows() {
@@ -41,7 +52,7 @@ function load_arrows() {
                     var line = new LeaderLine(
                         start,
                         end,
-                        {dash: {animation: true}, hide: true}                    
+                        {dash: {animation: true}, hide: true}
                     );
 
                     line.path = "straight";
@@ -53,7 +64,7 @@ function load_arrows() {
                     else {
                         line.setOptions({startSocket: 'right', endSocket: 'left'});
                     }
-                    
+
                     line.setOptions({
                         startPlugColor: '#1a6be0',
                         endPlugColor: '#1efdaa',
@@ -65,7 +76,8 @@ function load_arrows() {
                     // line.hide(['none']);
                     line.show(['draw'], {duration: 3000, timing: 'ease'});
 
-                    
+                    all_lines.push(line);
+
                 }
             }
         }

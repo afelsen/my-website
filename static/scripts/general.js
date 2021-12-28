@@ -1,65 +1,19 @@
-let nodes = document.querySelectorAll(".node");
-let links = document.querySelectorAll("button");
-var mouseCursor = document.querySelector(".cursor");
-
-var pencil_icon = document.querySelector("#pencil_icon");
-var canvas = document.querySelector("#paint")
-window.addEventListener("mousemove", cursor);
-
-var is_pencil = false;
-
-function cursor(e){
-    if (!is_pencil){
-      mouseCursor.style.top = e.pageY + "px";
-      mouseCursor.style.left = e.pageX + "px"; 
-    }
-    else {
-      pencil_icon.style.top = e.pageY + "px";
-      pencil_icon.style.left = e.pageX + "px"; 
-    }
+function debounce(func, time){
+    var time = time || 100; // 100 by default if no param
+    var timer;
+    return function(event){
+        if(timer) clearTimeout(timer);
+        timer = setTimeout(func, time, event);
+    };
 }
 
-nodes.forEach(link => {
-    
-    link.addEventListener('mouseleave', () => {
-      mouseCursor.classList.remove('pulsating-circle');
-      mouseCursor.classList.remove('link-grow-invert');
-    });
-    link.addEventListener('mouseover', () => {
-        mouseCursor.classList.add('pulsating-circle');
-        mouseCursor.classList.add('link-grow-invert');
-    });
-
-})
-
-links.forEach(link => {
-    
-  link.addEventListener('mouseleave', () => {
-    mouseCursor.classList.remove('pulsating-circle');
-    mouseCursor.classList.remove('link-grow');
-  });
-  link.addEventListener('mouseover', () => {
-    mouseCursor.classList.add('pulsating-circle');
-    mouseCursor.classList.add('link-grow');
-  });
-
-})
 
 
-canvas.addEventListener('mouseleave', () => {
-  is_pencil = false;
-  pencil_icon.style.visibility = "hidden";
-  mouseCursor.style.visibility = "visible";
-});
-canvas.addEventListener('mouseover', () => {
-  is_pencil = true;
-  pencil_icon.style.visibility = "visible";
-  mouseCursor.style.visibility = "hidden";
-});
+window.addEventListener('load', loaded, false);
 
 
-
-gsap.registerPlugin(ScrollTrigger);
+function loaded () {
+  gsap.registerPlugin(ScrollTrigger);
 // REVEAL //
 gsap.utils.toArray(".revealUp").forEach(function (elem) {
   ScrollTrigger.create({
@@ -101,3 +55,5 @@ gsap.utils.toArray(".revealUp").forEach(function (elem) {
     }
   });
 });
+
+}

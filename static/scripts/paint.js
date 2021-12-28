@@ -12,6 +12,30 @@ var fill_value = true;
 var stroke_value = false;
 var canvas_data = {"pencil": [], "eraser": []}
 
+doodle_arrow = []
+
+window.onload = load_doodle_arrow();
+window.addEventListener('resize', debounce(refresh_doodle_arrow, 200));
+
+
+function refresh_doodle_arrow(){
+  for (var i = 0; i < doodle_arrow.length; i++){
+    doodle_arrow[i].position();
+  }
+}
+
+function load_doodle_arrow() {
+  var start = document.getElementById("these");
+  var end = document.querySelector("#probabilities");
+  var line = new LeaderLine(
+      start,
+      end,
+      {}
+  );
+  line.setOptions({startSocket: 'bottom', endSocket: 'top'});
+  doodle_arrow.push(line);
+}
+
 function color(color_value){
     ctx.strokeStyle = color_value;
     ctx.fillStyle = color_value;
@@ -53,8 +77,11 @@ function pencil(){
     document.getElementById("pencil_icon_img").src="./static/images/icons/pencil_1_color.png";
 
     canvas.onmousedown = function(e){
-        curX = e.pageX - canvas.offsetLeft;
-        curY = e.pageY - canvas.offsetTop;
+
+        var topPos = canvas.getBoundingClientRect().top + window.scrollY;
+        var leftPos = canvas.getBoundingClientRect().left + window.scrollX;
+        curX = e.pageX - leftPos;
+        curY = e.pageY - topPos;
         hold = true;
 
         prevX = curX;
@@ -65,8 +92,10 @@ function pencil(){
 
     canvas.onmousemove = function(e){
         if(hold){
-            curX = e.pageX - canvas.offsetLeft;
-            curY = e.pageY - canvas.offsetTop;
+            var topPos = canvas.getBoundingClientRect().top + window.scrollY;
+            var leftPos = canvas.getBoundingClientRect().left + window.scrollX;
+            curX = e.pageX - leftPos;
+            curY = e.pageY - topPos;
             draw();
         }
     };
@@ -85,6 +114,7 @@ function pencil(){
         ctx.strokeStyle = "#ffffff";
         ctx.stroke();
         ctx.lineWidth = 5;
+        console.log(prevX, prevY, curX, curY);
         canvas_data.pencil.push({ "startx": prevX, "starty": prevY, "endx": curX, "endy": curY, "thick": ctx.lineWidth, "color": "#ffffff" });
     }
 }
@@ -96,8 +126,11 @@ function eraser(){
     document.getElementById("pencil_icon_img").src="./static/images/icons/eraser_color.png";
 
     canvas.onmousedown = function(e){
-        curX = e.pageX - canvas.offsetLeft;
-        curY = e.pageY - canvas.offsetTop;
+        var topPos = canvas.getBoundingClientRect().top + window.scrollY;
+        var leftPos = canvas.getBoundingClientRect().left + window.scrollX;
+
+        curX = e.pageX - leftPos;
+        curY = e.pageY - topPos;
         hold = true;
 
         prevX = curX;
@@ -108,14 +141,17 @@ function eraser(){
 
     canvas.onmousemove = function(e){
         if(hold){
-            curX = e.pageX - canvas.offsetLeft;
-            curY = e.pageY - canvas.offsetTop;
+            var topPos = canvas.getBoundingClientRect().top + window.scrollY;
+            var leftPos = canvas.getBoundingClientRect().left + window.scrollX;
+            curX = e.pageX - leftPos;
+            curY = e.pageY - topPos;
             draw();
         }
     };
 
     canvas.onmouseup = function(e){
         hold = false;
+        save();
     };
 
     canvas.onmouseout = function(e){
@@ -135,7 +171,7 @@ function get_python_data(){
     $.get("/getpythondata", function(data) {
         console.log($.parseJSON(data))
         var pred = $.parseJSON(data)
-        document.getElementById("prediction").innerHTML = "Prediction: " + pred["probabilities_string"];
+        // document.getElementById("prediction").innerHTML = "Prediction: " + pred["probabilities_string"];
 
         console.log(pred["probabilities"]);
         console.log(pred["order"]);
@@ -147,15 +183,21 @@ function get_python_data(){
         var list_elements = document.querySelector("#probabilities").children;
         for (i = 0; i < list_elements.length; i++) {
 
-            var name = list_elements[i].className         
+            var name = list_elements[i].className
             var o = order[name];
             var prob = probs[name];
-            
+
+            console.log(pred["destinations"][i])
+            if (o == 0){
+              document.getElementById("gotext").innerHTML = pred["destinations"][i] + " &#8594"
+            }
+
             list_elements[i].setAttribute("data-pos", o + 1);
             list_elements[i].children[0].children[2].innerHTML = Math.round(prob * 100) / 100;
             console.log(i)
             console.log(list_elements[i]);
         }
+
 
 
     })

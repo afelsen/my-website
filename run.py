@@ -13,7 +13,7 @@ from auxiliary import *
 #set FLASK_ENV=development
 app = Flask(__name__)
 
-pythondata = {"prediction": "None", "probabilities-string": "None", "probabilities": [0,0,0], "order": [0,1,2]}
+pythondata = {"prediction": "None", "probabilities-string": "None", "probabilities": [0,0,0,0,0], "order": [0,1,2,3,4], "destinations": ["Education", "Research and Internships", "Projects", "About", "Contact"]}
 
 @app.route('/getpythondata')
 def get_python_data():
@@ -35,7 +35,7 @@ def paintapp():
         img_bytes = base64.b64decode(canvas_image[offset:])
         img = Image.open(BytesIO(img_bytes))
         img  = np.array(img)
-        
+
 
         prediction, index, outputs = get_prediction(img)
         probabilities_string = get_probabilities_string(outputs, index)
@@ -56,7 +56,7 @@ def paintapp():
             orders_map[labels[i]] = orders_list.index(i)
             probs_map[labels[i]] = probs_list[i]
 
-            
+
 
         pythondata["probabilities"] = probs_map
         pythondata["order"] = orders_map
