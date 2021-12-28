@@ -114,6 +114,10 @@ def go_to_prediction():
         return render_template('about.html')
     elif pythondata["prediction"] == "Computer":
         return render_template('projects.html')
+    elif pythondata["prediction"] == "Brain":
+        return render_template('research_internships.html')
+    elif pythondata["prediction"] == "Envelope":
+        return render_template('projects.html')
 
     return render_template('paint.html')
 

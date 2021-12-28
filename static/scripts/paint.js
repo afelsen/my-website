@@ -187,9 +187,17 @@ function get_python_data(){
             var o = order[name];
             var prob = probs[name];
 
+            var img = list_elements[i].children[0].children[0]
+
+
             console.log(pred["destinations"][i])
             if (o == 0){
+              document.getElementById("go").style.animation = "glow 2s infinite";
               document.getElementById("gotext").innerHTML = pred["destinations"][i] + " &#8594"
+              img.style.visibility = 'visible';
+            }
+            else {
+              img.style.visibility = 'hidden';
             }
 
             list_elements[i].setAttribute("data-pos", o + 1);

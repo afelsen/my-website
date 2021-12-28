@@ -167,27 +167,31 @@ li {
 }
 
 .prob-item-a {
-    width:80%;
+    line-height: 25px;
+    width:100%;
+    text-align: center;
 }
 .prob-item-b {
-    width:20%;
+    width:64px;
     text-align: right;
 }
 
 .prob-icon {
-    padding-right: 50px;
+    /* padding-right: 50px; */
     width: 64px;
     height: 64px;
+    visibility: hidden;
     /* object-fit: cover; */
 }
 
 .probabilities-wrapper {
   width: 512px;
-  margin-right: auto;
+  margin-left: auto;
+  margin-right: 100px;
 }
 
 .canvas-wrapper {
-  margin-left: auto;
+  margin-right: auto;
 }
 
 .drawing-table-wrapper {
@@ -199,4 +203,25 @@ li {
 .drawing-item {
   position: relative;
   float: left;
+}
+
+#go {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 5px 5px 20px #1cb5c5,-5px -5px 20px #1cb5c5;
+  transition: 1.5s
+}
+
+
+@keyframes glow{
+  0%{
+    box-shadow: 5px 5px 20px #1cb5c5,-5px -5px 20px #1cb5c5;
+  }
+  50%{
+    box-shadow: 5px 5px 20px rgb(255, 255, 255),-5px -5px 20px rgb(255, 255, 255)
+  }
+  100%{
+    box-shadow: 5px 5px 20px #1cb5c5,-5px -5px 20px #1cb5c5
+  }
 }

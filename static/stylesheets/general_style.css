@@ -59,6 +59,8 @@
 
 .row{
   display: -ms-flex; display: -webkit-flex; display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -103,7 +105,7 @@ body {
   transition-property: background, transform;
   transform-origin: 100% 100%;
   backdrop-filter: blur(3px);
-  z-index: 2;
+  z-index: 100;
   overflow: hidden;
 }
 
@@ -246,4 +248,10 @@ a {
 	40% {
 		transform: scale(1.15) rotate(0);
 	}
+}
+
+
+#intro {
+  min-width: 400px;
+  max-width: 30%;
 }
