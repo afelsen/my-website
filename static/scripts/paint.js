@@ -71,12 +71,28 @@ function reset(){
 }
 
 // pencil tool
-
 function pencil(){
 
     document.getElementById("pencil_icon_img").src="./static/images/icons/pencil_1_color.png";
 
-    canvas.onmousedown = function(e){
+    canvas.ontouchstart = function(e){
+      var touch = e.touches[0];
+      mouse_down(touch);
+    }
+
+    canvas.ontouchend = function(e){
+      var touch = e.touches[0];
+      mouse_up(touch);
+    }
+
+    canvas.ontouchmove = function(e){
+      var touch = e.touches[0];
+      mouse_move(touch);
+    }
+
+    canvas.onmousedown = mouse_down;
+
+    function mouse_down(e){
 
         var topPos = canvas.getBoundingClientRect().top + window.scrollY;
         var leftPos = canvas.getBoundingClientRect().left + window.scrollX;
@@ -90,17 +106,23 @@ function pencil(){
         ctx.moveTo(prevX, prevY);
     };
 
-    canvas.onmousemove = function(e){
+    canvas.onmousemove = mouse_move;
+
+    function mouse_move(e){
         if(hold){
+
             var topPos = canvas.getBoundingClientRect().top + window.scrollY;
             var leftPos = canvas.getBoundingClientRect().left + window.scrollX;
             curX = e.pageX - leftPos;
             curY = e.pageY - topPos;
+            console.log(curX, curY);
             draw();
         }
     };
 
-    canvas.onmouseup = function(e){
+    canvas.onmouseup = mouse_up;
+
+    function mouse_up(e){
         hold = false;
         save()
     };
@@ -125,7 +147,24 @@ function eraser(){
 
     document.getElementById("pencil_icon_img").src="./static/images/icons/eraser_color.png";
 
-    canvas.onmousedown = function(e){
+    canvas.ontouchstart = function(e){
+      var touch = e.touches[0];
+      mouse_down(touch);
+    }
+
+    canvas.ontouchend = function(e){
+      var touch = e.touches[0];
+      mouse_up(touch);
+    }
+
+    canvas.ontouchmove = function(e){
+      var touch = e.touches[0];
+      mouse_move(touch);
+    }
+
+    canvas.onmousedown = mouse_down;
+
+    function mouse_down(e){
         var topPos = canvas.getBoundingClientRect().top + window.scrollY;
         var leftPos = canvas.getBoundingClientRect().left + window.scrollX;
 
@@ -139,7 +178,9 @@ function eraser(){
         ctx.moveTo(prevX, prevY);
     };
 
-    canvas.onmousemove = function(e){
+    canvas.onmousemove = mouse_move;
+
+    function mouse_move(e){
         if(hold){
             var topPos = canvas.getBoundingClientRect().top + window.scrollY;
             var leftPos = canvas.getBoundingClientRect().left + window.scrollX;
@@ -149,7 +190,9 @@ function eraser(){
         }
     };
 
-    canvas.onmouseup = function(e){
+    canvas.onmouseup = mouse_up;
+
+    function mouse_up(e){
         hold = false;
         save();
     };
