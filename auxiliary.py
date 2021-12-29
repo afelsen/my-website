@@ -35,7 +35,7 @@ def get_prediction(img):
     img = cv2.resize(img, (64,64), interpolation=cv2.INTER_NEAREST)
     img[img > 0] = 255
 
-    cv2.imwrite("static/test.png", img)
+    # cv2.imwrite("static/test.png", img)
 
 
     img = img[..., np.newaxis, np.newaxis]
@@ -49,7 +49,7 @@ def get_prediction(img):
 
     outputs = net(img.double())
     index = torch.argmax(outputs[0])
-    
+
     softmax = Softmax(dim=1)
     outputs = softmax(outputs)
 
