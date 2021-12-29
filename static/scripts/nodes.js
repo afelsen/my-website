@@ -49,11 +49,19 @@ function load_arrows() {
                         end = colA[j].children[0].children[0];
                     }
 
+                    var do_anim = true;
+                    var do_hide = true;
+                    if( isMobile.any() ) {
+                      do_anim = false;
+                      do_hide = false;
+                    }
+
                     var line = new LeaderLine(
                         start,
                         end,
-                        {dash: {animation: true}, hide: true}
+                        {dash: {animation: do_anim}, hide: do_hide}
                     );
+
 
                     line.path = "straight";
                     line.color = "black";
@@ -74,8 +82,9 @@ function load_arrows() {
                     line.setOptions({dropShadow: {color: 'blue', dx: 0, dy: 0}});
 
                     // line.hide(['none']);
-                    line.show(['draw'], {duration: 3000, timing: 'ease'});
-
+                    if (do_hide){
+                      line.show(['draw'], {duration: 3000, timing: 'ease'});
+                    }
                     all_lines.push(line);
 
                 }

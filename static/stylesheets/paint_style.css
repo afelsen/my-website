@@ -45,6 +45,10 @@
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
 }
 
+#penciltool:hover {
+  background: #ffffff;
+}
+
 #erasertool {
     pointer-events: auto;
     background: #555555;
@@ -56,6 +60,11 @@
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
 }
 
+#erasertool:hover {
+  background: #ffffff;
+}
+
+
 #resettool {
     pointer-events: auto;
     background: #555555;
@@ -66,6 +75,12 @@
     border-radius: 25%;
     box-shadow: rgba(0, 0, 0, .75) 0 2px 6px;
 }
+
+#resettool:hover {
+  background: #ffffff;
+  color     : #000000;
+}
+
 
 /* #learnmore {
     margin: 20px auto;
