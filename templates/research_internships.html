@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/paint_style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/general_style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/card_style.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="static/stylesheets/lightbox.min.css"/>
 <body>
 
   <h2 id="title">Research & Internships</h2>
@@ -25,8 +25,10 @@
     </div>
 
     <div class="card-link">
+      <a href="static/images/u87-3b_0364_prism+jet.png" data-lightbox="cells" data-title="Featured Image at Binghamton University's Art of Science Competition"><img src=static/images/u87-3b_0364_prism+jet.png> </img></a>
+      <a href="static/images/KGML Poster.png" data-lightbox="cells" data-title="Poster Presented at KGML2021"></a>
       <!-- <img src="static/images/KGML Poster.png"> </img> -->
-      <img src=static/images/u87-3b_0364_prism+jet.png> </img>
+      <!-- <img src=static/images/u87-3b_0364_prism+jet.png> </img> -->
     </div>
   </div>
 
@@ -53,7 +55,7 @@
     </div>
 
     <div class="card-link">
-      <img src="static/images/MM_timessquare.jpg"> </img>
+      <a href="static/images/MM_timessquare.jpg" data-lightbox="mm" data-title="Picture I Took at the M&M Store in Times Square!"> <img src="static/images/MM_timessquare.jpg"> </img></a>
     </div>
   </div>
 
@@ -74,8 +76,10 @@
     </div>
 
     <div class="card-link">
-      <img src="static/images/FRI.png"> </img>
+      <a href="static/images/FRI.png" data-lightbox="FRI" data-title="My Facial Landmarks Detected by OpenFace"> <img src="static/images/FRI.png"> </img></a>
     </div>
   </div>
 
+
+  <script src=" {{ url_for('static', filename='scripts/libraries/lightbox.min.js') }}"></script>
 {% endblock %}
