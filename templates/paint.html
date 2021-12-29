@@ -1,0 +1,207 @@
+{% include "base.html" %}
+{% block content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/node_style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/paint_style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/general_style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <body onload="pencil()">
+
+        <h1 id = "welcome" class = "revealup" style="font-size: 75"> Welcome! </h1>
+
+        <div class="row">
+            <div class="card">
+              <!-- <img src="img_avatar.png" alt="Avatar" style="width:100%"> -->
+              <div class="card-container">
+                <p id="intro"> I am a <span style="color: #1cb5c5">computer science</span> and <span style="color: #1cb5c5">mathematics</span>
+                  student passionate about Machine Learning and Big Data.
+                  I am excited to play a part in the recent advancements in machine learning which hold the promise of
+                  solving and simplifying the most complex problems of our world.
+                </p>
+              </div>
+            </div>
+        </div>
+
+        <div class="row">
+          <div class="column four_col node_headers"><h2>Education</h2></div>
+          <div class="column four_col node_headers"><h2>Research and Internships</h2></div>
+          <div class="column four_col node_headers"><h2>Projects</h2></div>
+          <div class="column four_col node_headers"><h2>About Me!</h2></div>
+        </div>
+        <div class="row" id = "all_nodes">
+
+          <div class="column four_col vertical-center" id = "col1">
+            <div class="node_div">
+              <a href="{{url_for('education')}}">
+                <img src = "./static/images/binghamton_logo.png" class = "node grow"></img>
+              </a>
+              <p class="caption">Binghamton University</p>
+            </div>
+          </div>
+          <div class="column four_col" id = "col2">
+
+            <div class="node_div">
+              <a href="{{url_for('research_internships')}}">
+                <img src = "./static/images/u87-3b_0364_prism+jet.png" class = "node grow"></img>
+              </a>
+              <p class="caption">Biomedical Machine Learning Research</p>
+              <br>
+            </div>
+            <div class="node_div">
+              <a href="{{url_for('research_internships')}}">
+                <img src = "./static/images/grid_4_edited.jpg" class = "node grow"></img>
+              </a>
+              <p class="caption">Mars Inc. Internship</p>
+              <br>
+            </div>
+            <div class="node_div">
+              <a href="{{url_for('research_internships')}}">
+                <img src = "./static/images/FRI.png" class = "node grow"></img>
+              </a>
+              <p class="caption">FRI Research Program</p>
+            </div>
+          </div>
+          <div class="column four_col" id = "col3">
+
+            <div class="node_div">
+              <a href="{{url_for('projects')}}">
+                <img src = "./static/images/saliency_Niko_Crop_most.jpg" class = "node grow"></img>
+              </a>
+              <p class="caption">HackBU 2019-2021</p>
+              <br>
+            </div>
+
+            <div class="node_div">
+              <a href="{{url_for('projects')}}">
+                <img src = "./static/images/QB-visualization-MattRyan_Crop_Most.png" class = "node grow"></img>
+              </a>
+              <p class="caption">Side Projects</p>
+              <br>
+            </div>
+            <div class="node_div">
+              <a href="{{url_for('projects')}}">
+                <img src = "./static/images/Final.png" class = "node grow"></img>
+              </a>
+              <p class="caption">3D Design and Rendering</p>
+            </div>
+          </div>
+
+          <div class="column four_col vertical-center" id = "col4">
+            <div class="node_div">
+              <a href="{{url_for('projects')}}">
+                <img src = "./static/images/20210506_Felsen02_jwc_edited.jpg" class = "node grow"></img>
+              </a>
+              <p class="caption">About Me!</p>
+            </div>
+          </div>
+        </div>
+
+
+          <div class="row">
+            <h2>DEMO: Navigate by drawing a doodle from <span style="color: #1cb5c5" id="these">this</span> list, then click the button below!</h2>
+          </div>
+          <div class="row">
+            <h3 style="z-index: 2"> Using a custom-built <span style="color: #ee4c2c" id="these">PyTorch</span> neural network, and Google's <span style="color: #ffd139" id="these">Quick, Draw!</span> dataset</h3>
+            <a href="{{url_for('research_internships')}}"><button class = "button-link button-wiggle">Learn More &#8250</button></a>
+          </div>
+          <div class="row">
+            <!-- <h2 id="title">Paint App</h2> -->
+
+            <div id="pencil_icon"><img id="pencil_icon_img" src = "./static/images/icons/pencil_1_color.png"></img></div>
+          <div class="drawing-table-wrapper">
+            <div class="probabilities-wrapper drawing-item">
+                  <!-- <p id="prediction">Prediction: {{prediction}}</p> -->
+                  <ul id="probabilities">
+                    <li class="education" data-pos="1" >
+                      <div class="prob-item-wrapper">
+                        <img src = ./static/images/icons/book_1_color.png class="prob-icon"></img>
+                        <div class="prob-item-a">
+                          <b>Education</b>: Doodle a <br><span style="color: #f9cc38; font-size: 20px"><b>book</b></span>
+                        </div>
+                        <div class="prob-item-b">
+
+                        </div>
+                      </div>
+                    </li>
+                    <li class="research" data-pos="2" >
+                      <div class="prob-item-wrapper">
+                        <img src = ./static/images/icons/brain_2_color.png class="prob-icon"></img>
+                        <div class="prob-item-a">
+                          <b>Research & Internships</b>: Doodle a <br><span style="color: #f9cc38; font-size: 20px"><b>brain</b></span>
+                        </div>
+                        <div class="prob-item-b">
+
+                        </div>
+                      </div>
+                    </li>
+                    <!-- <li class="research" data-pos="2" >Brain - Research:</li> -->
+                    <li class="projects" data-pos="3" >
+                      <div class="prob-item-wrapper">
+                        <img src = ./static/images/icons/computer_1_color.png class="prob-icon"></img>
+                        <div class="prob-item-a">
+                          <b>Projects</b>: Doodle a <br><span style="color: #f9cc38; font-size: 20px"><b>computer</b></span>
+                        </div>
+                        <div class="prob-item-b">
+
+                        </div>
+                      </div>
+                    </li>
+                    <li class="about" data-pos="4" >
+                      <div class="prob-item-wrapper">
+                        <img src = ./static/images/icons/face_1_color.png class="prob-icon"></img>
+                        <div class="prob-item-a">
+                          <b>About</b>: Doodle a <br><span style="color: #f9cc38; font-size: 20px"><b>face</b></span>
+                        </div>
+                        <div class="prob-item-b">
+
+                        </div>
+                      </div>
+                    </li>
+                    <li class="contact" data-pos="5" >
+                      <div class="prob-item-wrapper">
+                        <img src = ./static/images/icons/envelope_1_color.png class="prob-icon"></img>
+                        <div class="prob-item-a">
+                          <b>Contact</b>: Doodle an <br><span style="color: #f9cc38; font-size: 20px"><b>envelope</b></span>
+                        </div>
+                        <div class="prob-item-b">
+
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+              </div>
+
+                <div class="canvas-wrapper drawing-item">
+                    <canvas id="paint" width="512" height="512" style="border: 1px solid #ffffff;"></canvas>
+
+                    <fieldset id="toolset">
+                      <br>
+                      <br>
+                      <button id="penciltool" type="button" style="height: 50px; width: 50px;" onclick="pencil()"><img style="height: 35px; width: 35px;" src = ./static/images/icons/pencil_1_color.png></img></button>
+                      <br>
+                      <br>
+                      <br>
+                      <button id="erasertool" type="button" style="height: 50px; width: 50px;" onclick="eraser()"><img style="height: 35px; width: 35px;" src = ./static/images/icons/eraser_color.png></img></button>
+                      <br>
+                      <br>
+                      <br>
+                      <button id="resettool" type="button" style="height: 50px; width: 50px;" onclick="reset()">Reset</button>
+                    </fieldset>
+                </div>
+
+              </div>
+          </div>
+
+          <div class="row">
+            <a href="{{url_for('go_to_prediction')}}" style="text-decoration: none;"><button class = "button-link" id="go"><h3 id="gotext">Doodle to Navigate!</h3></button></a>
+          </div>
+
+
+
+
+        <script src=" {{ url_for('static', filename='scripts/nodes.js') }}"></script>
+        <script src=" {{ url_for('static', filename='scripts/paint.js') }}"></script>
+
+
+{% endblock %}
