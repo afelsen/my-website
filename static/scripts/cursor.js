@@ -26,7 +26,7 @@ else {
 function trackcursor () {
 
   let nodes = document.querySelectorAll(".node, .nav-item");
-  let links = document.querySelectorAll("button");
+  let links = document.querySelectorAll("button, a");
   mouseCursor = document.querySelector(".cursor");
 
   var pencil_icon = document.querySelector("#pencil_icon");

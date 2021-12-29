@@ -3,8 +3,100 @@
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/node_style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/paint_style.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/general_style.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body>
 
-  <h2 id="title">Projects</h2>
+  <h1 id="title">Projects</h1>
+
+  <div class="card-media-wrapper">
+    <div class="date">
+      <h1> HackBU 2021 </h1>
+      <div class="github-div">
+        <a href="https://github.com/afelsen/zooML-HackBU2021">
+          <img src="static/images/GitHub-Mark-Light-120px-plus.png" class = "github"></img>
+        </a>
+        <p class="caption">View on GitHub</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-container">
+        <h1> ZooML </h1>
+
+        <p>For the first ever virtual HackBU, it was only fitting to make a "Zoom" themed hack. My 3 teammates and I created an overlay for Zoom that detected and analyzed the facial expressions of individuals in a Zoom room.
+        <br><br>
+        • We used OpenCV for facial detection
+        <br>
+        • Implemented a custom made CNN in PyTorch to classify facial expressions ("talking", "attentive", "inattentive", "confused") trained on images of ourselves
+        <br>
+        • Created final interface with Tkinter
+        <br><br>
+        It came down to the wire this time, but we managed to submit our project and demo with a few minutes to spare. We are especially proud of the work we put into this project, and thrilled to receive 4 awards!
+        </p>
+      </div>
+    </div>
+
+    <div class="card-link">
+      <a href="static/images/zooML.png" data-lightbox="zooml" data-title="ZooML demo"><img src=static/images/zooML.png> </img></a>
+      <!-- <img src="static/images/KGML Poster.png"> </img> -->
+      <!-- <img src=static/images/u87-3b_0364_prism+jet.png> </img> -->
+    </div>
+  </div>
+
+  <div class="card-media-wrapper">
+    <div class="date">
+      <h1> HackBU 2020 </h1>
+      <div class="github-div">
+        <a href="https://github.com/Richard-Quinlivan/HackBU2020">
+          <img src="static/images/GitHub-Mark-Light-120px-plus.png" class = "github"></img>
+        </a>
+        <p class="caption">View on GitHub</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-container">
+        <h1> A Candidate Like You </h1>
+
+        <p> With the presidential primaries on the way (in February 2020), our team developed a website that matches users with the presidential candidate they are most alike:
+          <br><br>
+          1. Convolutional Neural Network (CNN): Take a selfie to find which candidate looks most like you.
+          <br>
+          2. ML Chatbot: Have a candid conversation with our chatbot to get matched with a similar-minded candidate.
+          <br><br>
+          Please click on the GitHub link for more detailed information! </p>
+
+        <br><br>
+      </div>
+    </div>
+
+    <div class="card-link">
+      <a href="static/images/saliency_Niko_Crop_most.jpg" data-lightbox="hackbu2020" data-title="Saliency Map Output from our CNN"> <img src="static/images/saliency_Niko_Crop_most.jpg"> </img></a>
+    </div>
+  </div>
+
+  <div class="card-media-wrapper">
+    <div class="date">
+      <h1> HackBU 2019 </h1>
+      <div class="github-div">
+        <a href="https://github.com/afelsen/hackBU2019-mirror">
+          <img src="static/images/GitHub-Mark-Light-120px-plus.png" class = "github"></img>
+        </a>
+        <p class="caption">View on GitHub</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-container">
+        <h1> Opposites Attract </h1>
+
+          <p> If dating websites have failed you in the past, our site certainly takes a different approach. We promise to match you up with a partner you'll despise!
+            <br><br>
+            This idea is simple, but it challenged our team to learn Flask and web development in under 24 hours.
+      ​    </p>
+
+        <br><br>
+      </div>
+    </div>
+
+    <div class="card-link">
+      <a href="static/images/frontPage.png" data-lightbox="hackbu2019" data-title="Front Page of the Website"> <img src="static/images/frontPage.png"> </img></a>
+    </div>
+  </div>
 {% endblock %}
