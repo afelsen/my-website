@@ -5,15 +5,22 @@ var mouseCursor = null;
 function cursor(e){
     if (!is_pencil){
       mouseCursor.style.top = e.pageY + "px";
-      mouseCursor.style.left = e.pageX + "px"; 
+      mouseCursor.style.left = e.pageX + "px";
     }
     else {
       pencil_icon.style.top = e.pageY + "px";
-      pencil_icon.style.left = e.pageX + "px"; 
+      pencil_icon.style.left = e.pageX + "px";
     }
 }
 
-window.addEventListener('load', trackcursor, false);
+if (isMobile.any()){
+  mouseCursor = document.querySelector(".cursor");
+  mouseCursor.style.visibility = "hidden";
+}
+else {
+  window.addEventListener('load', trackcursor, false);
+}
+
 
 
 function trackcursor () {
@@ -28,7 +35,7 @@ function trackcursor () {
 
 
   nodes.forEach(link => {
-      
+
       link.addEventListener('mouseleave', () => {
         mouseCursor.classList.remove('pulsating-circle');
         mouseCursor.classList.remove('link-grow-invert');
@@ -42,7 +49,7 @@ function trackcursor () {
 
 
   links.forEach(link => {
-      
+
     link.addEventListener('mouseleave', () => {
       mouseCursor.classList.remove('pulsating-circle');
       mouseCursor.classList.remove('link-grow');
