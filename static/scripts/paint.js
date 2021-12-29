@@ -14,6 +14,26 @@ var canvas_data = {"pencil": [], "eraser": []}
 
 doodle_arrow = []
 
+
+// Prevent scrolling when touching the canvas
+document.body.addEventListener("touchstart", function (e) {
+  console.log("testing touch 123");
+  if (e.target == canvas) {
+    e.preventDefault();
+  }
+}, { passive: false });
+document.body.addEventListener("touchend", function (e) {
+  if (e.target == canvas) {
+    e.preventDefault();
+  }
+}, { passive: false });
+document.body.addEventListener("touchmove", function (e) {
+  if (e.target == canvas) {
+    e.preventDefault();
+  }
+}, { passive: false });
+
+
 window.onload = load_doodle_arrow();
 window.addEventListener('resize', debounce(refresh_doodle_arrow, 200));
 
