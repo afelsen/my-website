@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>Adiel Felsen's Website</title>
-    <div class="cursor"></div>
+    <div class="cursor" style="visibility:hidden;"></div>
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/card_style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/node_style.css') }}">
@@ -9,38 +9,17 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/general_style.css') }}">
     <link rel="stylesheet" href="static/stylesheets/lightbox.min.css"/>
 
-    <!-- <link rel="stylesheet" href="magnific-popup/magnific-popup.css"> -->
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/magnific-popup.css') }}"> -->
-
-
-
-    <!-- <script type="text/javascript" src="static/scripts/libraries/materialize.min.js"></script> -->
-
-
-    <!--Import Google Icon Font-->
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <!--Import materialize.css-->
-    <!-- <link type="text/css" rel="stylesheet" href="static/stylesheets/materialize.min.css"  media="screen,projection"/> -->
-
     <!--Let browser know website is optimized for mobile-->
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"/> -->
 </head>
 <body>
-
-    <!-- <div align="right">
-    <a href="/">Home</a>
-    </div> -->
-
-    <!-- <h1 align="left">
-      Adiel Felsen
-    </h1> -->
 
     <div class="topnav">
       <h1>
         Adiel Felsen
       </h1>
       <div class="topnav-right">
-        <a class = "nav-item" class="active" href="{{url_for('paintapp')}}">Home</a>
+        <a class = "nav-item active" href="{{url_for('paintapp')}}">Home</a>
         <a class = "nav-item" href="{{url_for('education')}}">Education</a>
         <a class = "nav-item" href="{{url_for('research_internships')}}">Research and Work</a>
         <a class = "nav-item" href="{{url_for('projects')}}">Projects</a>
@@ -48,19 +27,7 @@
         <a class = "nav-item" href="{{url_for('about')}}">Contact</a>
       </div>
     </div>
-  <!-- <nav>
-    <div class="nav-wrapper">
-      <a href="{{url_for('paintapp')}}" class="brand-logo">Adiel Felsen</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="{{url_for('paintapp')}}">Home</a></li>
-        <li><a href="{{url_for('research_internships')}}">Research and Internships</a></li>
-        <li><a href="{{url_for('projects')}}">Projects</a></li>
-        <li><a href="{{url_for('about')}}">About</a></li>
-      </ul>
-    </div>
-  </nav> -->
 
-    <!-- <hr> -->
   <div style="margin-left: 5%; margin-right: 5%;">
     {% block content %}{% endblock %}
 

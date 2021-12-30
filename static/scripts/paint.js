@@ -15,9 +15,14 @@ var canvas_data = {"pencil": [], "eraser": []}
 doodle_arrow = []
 
 
+
+function go_to_pred(){
+  console.log("TEST")
+  window.location.href = "go_to_prediction";
+};
+
 // Prevent scrolling when touching the canvas
 document.body.addEventListener("touchstart", function (e) {
-  console.log("testing touch 123");
   if (e.target == canvas) {
     e.preventDefault();
   }
@@ -88,6 +93,21 @@ function reset(){
     ctx.fillStyle = "black";
     ctx.fillRect(0, 0, width, height);
     canvas_data = { "pencil": [], "eraser": [] }
+
+    var list_elements = document.querySelector("#probabilities").children;
+    for (i = 0; i < list_elements.length; i++) {
+      if (i == 0){
+        list_elements[i].setAttribute("data-pos", 0);
+      }
+      else {
+        list_elements[i].setAttribute("data-pos", i + 1);
+      }
+
+      list_elements[i].children[0].children[2].innerHTML = "";
+      var img = list_elements[i].children[0].children[0];
+      img.style.visibility = 'hidden';
+    }
+
 }
 
 // pencil tool
@@ -258,10 +278,16 @@ function get_python_data(){
               document.getElementById("go").style.animation = "glow 2s infinite";
               document.getElementById("gotext").innerHTML = pred["destinations"][i] + " &#8594"
               img.style.visibility = 'visible';
+
+              list_elements[i].setAttribute( "onClick", "go_to_pred()" );
+              list_elements[i].style.cursor = "pointer";
             }
             else {
+              list_elements[i].removeAttribute("onClick");
+              list_elements[i].style.cursor = "none";
               img.style.visibility = 'hidden';
             }
+
 
             list_elements[i].setAttribute("data-pos", o + 1);
             list_elements[i].children[0].children[2].innerHTML = Math.round(prob * 100) / 100;

@@ -1,8 +1,13 @@
 
 var is_pencil = false;
 var mouseCursor = null;
+var moved = false;
 
 function cursor(e){
+    if (!moved){
+      mouseCursor.style.visibility = "visible";
+      moved = true;
+    }
     if (!is_pencil){
       mouseCursor.style.top = e.pageY + "px";
       mouseCursor.style.left = e.pageX + "px";
@@ -26,7 +31,7 @@ else {
 function trackcursor () {
 
   let nodes = document.querySelectorAll(".node, .nav-item");
-  let links = document.querySelectorAll("button, a");
+  let links = document.querySelectorAll("button, a, .clickable");
   mouseCursor = document.querySelector(".cursor");
 
   var pencil_icon = document.querySelector("#pencil_icon");
@@ -61,16 +66,17 @@ function trackcursor () {
 
   })
 
-
-  canvas.addEventListener('mouseleave', () => {
-    is_pencil = false;
-    pencil_icon.style.visibility = "hidden";
-    mouseCursor.style.visibility = "visible";
-  });
-  canvas.addEventListener('mouseover', () => {
-    is_pencil = true;
-    pencil_icon.style.visibility = "visible";
-    mouseCursor.style.visibility = "hidden";
-  });
+  if (canvas != null){
+    canvas.addEventListener('mouseleave', () => {
+      is_pencil = false;
+      pencil_icon.style.visibility = "hidden";
+      mouseCursor.style.visibility = "visible";
+    });
+    canvas.addEventListener('mouseover', () => {
+      is_pencil = true;
+      pencil_icon.style.visibility = "visible";
+      mouseCursor.style.visibility = "hidden";
+    });
+  }
 
 }

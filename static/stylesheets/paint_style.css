@@ -156,6 +156,10 @@ li {
   left: 0;
 }
 
+[data-pos="0"] {
+  top: 0;
+}
+
 [data-pos="1"] {
   top: 0;
   background-color: #1cb5c5;
