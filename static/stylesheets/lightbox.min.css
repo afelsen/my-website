@@ -6,6 +6,7 @@ font-size: 24px !important;
 }
 
 .lb-image {
+  min-width: 400px;
   max-height: 85vh !important;
   width: auto !important;
   height: auto !important;

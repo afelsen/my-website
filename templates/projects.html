@@ -1,13 +1,11 @@
 {% include "base.html" %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/node_style.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/paint_style.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/general_style.css') }}">
+
 <body>
 
   <h1 id="title">Projects</h1>
 
-  <div class="card-media-wrapper">
+  <div class="card-media-wrapper" id="hackbu">
     <div class="date">
       <h1> HackBU 2021 </h1>
       <div class="github-div">
@@ -21,7 +19,18 @@
       <div class="card-container">
         <h1> ZooML </h1>
 
-        <p>For the first ever virtual HackBU, it was only fitting to make a "Zoom" themed hack. My 3 teammates and I created an overlay for Zoom that detected and analyzed the facial expressions of individuals in a Zoom room.
+        <p>
+        <span style="font-size:28px; color: #1cb5c5"><b> 1st Place Overall </b></span>
+        <br>
+        <span style="font-size:20px; color: #001131"><b> Best Machine Learning Hack by the Raymond Corporation </b></span>
+        <br>
+        <span style="font-size:20px; color: #001131"><b> Best Building a Better Future Hack by AIS </b></span>
+        <br>
+        <span style="font-size:20px; color: #001131"><b> Best Civic Engagement Hack by J.P. Morgan </b></span>
+
+        <br><br>
+
+        For the first ever virtual HackBU, it was only fitting to make a "Zoom" themed hack. My 3 teammates and I created an overlay for Zoom that detected and analyzed the facial expressions of individuals in a Zoom room.
         <br><br>
         • We used OpenCV for facial detection
         <br>
@@ -55,7 +64,12 @@
       <div class="card-container">
         <h1> A Candidate Like You </h1>
 
-        <p> With the presidential primaries on the way (in February 2020), our team developed a website that matches users with the presidential candidate they are most alike:
+
+        <p>
+          <span style="font-size:20px; color: #1cb5c5"><b> Featured Project </b></span>
+
+          <br><br>
+          With the presidential primaries on the way (in February 2020), our team developed a website that matches users with the presidential candidate they are most alike:
           <br><br>
           1. Convolutional Neural Network (CNN): Take a selfie to find which candidate looks most like you.
           <br>
@@ -86,7 +100,10 @@
       <div class="card-container">
         <h1> Opposites Attract </h1>
 
-          <p> If dating websites have failed you in the past, our site certainly takes a different approach. We promise to match you up with a partner you'll despise!
+          <p>
+            <span style="font-size:20px; color: #1cb5c5"><b> Best Valentine's Day Hack </b></span>
+            <br><br>
+            If dating websites have failed you in the past, our site certainly takes a different approach. We promise to match you up with a partner you'll despise!
             <br><br>
             This idea is simple, but it challenged our team to learn Flask and web development in under 24 hours.
       ​    </p>
@@ -99,4 +116,96 @@
       <a href="static/images/frontPage.png" data-lightbox="hackbu2019" data-title="Front Page of the Website"> <img src="static/images/frontPage.png"> </img></a>
     </div>
   </div>
+
+
+
+  <div class="card-media-wrapper" id="otherprojects">
+    <div class="date">
+      <h1> Side Projects </h1>
+      <div class="github-div" style="width:85%;">
+        <a href="https://github.com/afelsen/fantasy-football-nn">
+          <img src="static/images/GitHub-Mark-Light-120px-plus.png" class = "github"></img>
+        </a>
+        <p class="caption">View Fantasy Football NN on Github</p>
+      </div>
+      <br><br>
+      <div class="github-div" style="width:85%;">
+        <a href="https://github.com/afelsen/monopoly-probability">
+          <img src="static/images/GitHub-Mark-Light-120px-plus.png" class = "github"></img>
+        </a>
+        <p class="caption">View Monopoly Simulator on Github</p>
+      </div>
+      <br><br>
+      <div class="github-div" style="width:85%;">
+        <a href="https://github.com/afelsen/find-the-difference-solver">
+          <img src="static/images/GitHub-Mark-Light-120px-plus.png" class = "github"></img>
+        </a>
+        <p class="caption">View Find the Difference on Github</p>
+      </div>
+
+    </div>
+    <div class="card">
+      <div class="card-container">
+        <h1> Fantasy Football NN </h1>
+
+        <p>
+          After growing tired of ESPN's flawed fantasy football predictions, I wanted to try to outperform their models using machine learning.
+    ​    </p>
+        <br><br><br>
+        <h1> Monopoly Simulator </h1>
+
+        <p>
+          Which Monopoly property is landed on the most often? Which gives you the most bang for your buck?
+          <br>
+          This simulator runs thousands of Monopoly games to answer these burning questions.
+          <br><br>
+          Click on the link for some interesting statistics!
+    ​    </p>
+
+        <br><br><br>
+        <h1> Spot the Difference </h1>
+
+        <p>
+          This simple application uses OpenCV to highlight the differences between two images.
+        ​</p>
+
+          <br><br>
+      </div>
+    </div>
+
+    <div class="card-link">
+        <a href="static/images/QB-visualization-MattRyan_Crop_Most.png" data-lightbox="otherprojects" data-title="Visualization of the most important data points the neural net used to predict Matt Ryan's fantasy football score"> <img src="static/images/QB-visualization-MattRyan_Crop_Most.png"> </img></a>
+        <a href="static/images/MonopolyTenThousand.png" data-lightbox="otherprojects" data-title="Following a simulation of 10,000 4-player games: Each property displays the fraction of winners who owned that property (top) and the percent of the time the property was landed on (bottom)"> <img src="static/images/MonopolyTenThousand.png"> </img></a>
+      </div>
+  </div>
+
+
+
+
+  <div class="card-media-wrapper" id="otherprojects">
+    <div class="date">
+      <h1> 3D Rendering with Blender and More! </h1>
+    </div>
+
+    <div class="card-link" id = "blender">
+        <h1 style="width:100%;"> Bender Image Renders </h1>
+        <a href="static/images/Full Room - Night Table 1.png" data-lightbox="blender" data-title= "Room at Night"> <img src="static/images/Full Room - Night Table 1.png"> </img></a>
+        <a href="static/images/Full Room 12.png" data-lightbox="blender" data-title= "Highly Detailed Interior Render"> <img src="static/images/Full Room 12.png"> </img></a>
+        <a href="static/images/Final.png" data-lightbox="blender" data-title= "My First Blender Render"> <img src="static/images/Final.png"> </img></a>
+
+        <h1 style="width:100%;"> Bender Video Renders </h1>
+        <p style="width:100%;">Note: These are not viewable in the lightbox</p>
+        <a href="static/images/02 - 0001-0090.mp4"> <video src="static/images/02 - 0001-0090.mp4"> </video></a>
+        <a href="static/images/06 - chair_rotation.mp4"> <video src="static/images/06 - chair_rotation.mp4"> </video></a>
+        <a href="static/images/01 - 0001-0149.mp4"> <video src="static/images/01 - 0001-0149.mp4"> </video></a>
+
+        <h1 style="width:100%;"> Stereograms (Magic Eye) </h1>
+        <p style="width:100%;"> Custom made sterograms using 3D scanning. To view this "magic eye" image, blur your eyes until a 3D image pops out! This can be difficult for some people, see instructions for how to view <a href="https://www.magiceye.com/faq-items/help-how-do-i-see-in-3d/"> here</a>. Click an image for full screen and the "solution" to the magic eye! </p>
+        <a href="static/images/face_2_stereo.jpg" data-lightbox="blender" data-title= "Try to see the hidden 3D image"> <img src="static/images/face_2_stereo.jpg"> </img></a>
+        <a href="static/images/face_2.png" data-lightbox="blender" data-title= "It's a scan of me!"> </a>
+        <a href="static/images/toby_stereo.jpg" data-lightbox="blender" data-title= "This one is harder to see..."> <img src="static/images/toby_stereo.jpg"> </img></a>
+        <a href="static/images/toby.png" data-lightbox="blender" data-title= "It's a scan of Toby, my dog!"> </a>
+    </div>
+  </div>
+
 {% endblock %}

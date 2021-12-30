@@ -51,13 +51,16 @@
   display: flex;
   justify-content: center;
 
+  flex-wrap: wrap;
+
 }
 
 .card-link a {
   align-self: center;
 }
 
-.card-link img {
+.card-link img, video {
+  min-width: 300px;
   max-width:100%;
   max-width: 400px;
   align-self: center;
@@ -67,7 +70,7 @@
   /* margin: 5%; */
 }
 
-.card-link img:hover {
+.card-link img:hover, video:hover {
   cursor: pointer;
   box-shadow: 0 8px 16px 0 #1cb5c5;
 }
@@ -79,7 +82,7 @@
   margin-top: 5%;
   float:left;
   min-width: 200px;
-  text-align: right;
+  text-align: center;
 }
 
 .github {
@@ -100,7 +103,12 @@
   z-index:0;
 }
 
-.github-div:hover .caption {
+.github-div .caption {
   visibility: visible;
   opacity: 1;
+}
+
+.github-div:hover .caption {
+  visibility: hidden;
+  opacity: 0;
 }

@@ -3,11 +3,16 @@
     <title>Adiel Felsen's Website</title>
     <div class="cursor"></div>
 
-    <link rel="stylesheet" href="static/stylesheets/lightbox.min.css"/>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/card_style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/node_style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/paint_style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/general_style.css') }}">
+    <link rel="stylesheet" href="static/stylesheets/lightbox.min.css"/>
+
+    <!-- <link rel="stylesheet" href="magnific-popup/magnific-popup.css"> -->
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='stylesheets/magnific-popup.css') }}"> -->
+
+
 
     <!-- <script type="text/javascript" src="static/scripts/libraries/materialize.min.js"></script> -->
 
@@ -37,9 +42,10 @@
       <div class="topnav-right">
         <a class = "nav-item" class="active" href="{{url_for('paintapp')}}">Home</a>
         <a class = "nav-item" href="{{url_for('education')}}">Education</a>
-        <a class = "nav-item" href="{{url_for('research_internships')}}">Research and Internships</a>
+        <a class = "nav-item" href="{{url_for('research_internships')}}">Research and Work</a>
         <a class = "nav-item" href="{{url_for('projects')}}">Projects</a>
         <a class = "nav-item" href="{{url_for('about')}}">About</a>
+        <a class = "nav-item" href="{{url_for('about')}}">Contact</a>
       </div>
     </div>
   <!-- <nav>
@@ -65,11 +71,12 @@
 
     <script src="{{ url_for('static', filename='scripts/libraries/gsap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/libraries/ScrollTrigger.min.js') }}"></script>
+    <script src=" {{ url_for('static', filename='scripts/libraries/lightbox.min.js') }}"></script>
 
     <script src="{{ url_for('static', filename='scripts/general.js') }}"></script>
     <script src="{{ url_for('static', filename='scripts/cursor.js') }}"></script>
 
-    <script src=" {{ url_for('static', filename='scripts/libraries/lightbox.min.js') }}"></script>
+
 </body>
 
 
