@@ -245,3 +245,52 @@ li {
     box-shadow: 5px 5px 20px #1cb5c5,-5px -5px 20px #1cb5c5
   }
 }
+
+
+.contact-links {
+  background: #fff;
+  border: 5px solid #222;
+  border-radius: 18px;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2rem;
+  position: relative;
+  width: clamp(800px, 50%, 800px);
+  /* margin-top: 50px; */
+  margin-bottom: 50px;
+}
+
+.contact-links:before {
+  content: "";
+  background: linear-gradient(130deg, #ff7a18, #af002d 41.07%, #319197 76.05%);
+  border: 5px solid #222;
+  border-radius: 18px;
+  height: 100%;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 100%;
+  z-index: -1;
+}
+
+.contact-link {
+  padding: 1rem;
+  /* width: 25%; */
+}
+
+.contact-link:not(:last-child) {
+  border-right: 1px solid #ccc;
+}
+
+.contact-link img {
+  max-height: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-link p {
+  color: black;
+  font-size: 15px;
+}

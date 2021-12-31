@@ -100,8 +100,11 @@ def projects():
     return render_template('projects.html')
 @app.route('/about')
 def about():
-    print("ABOUT")
     return render_template('about.html')
+
+@app.route('/learn_more')
+def learn_more():
+    return render_template('learn_more.html')
 
 # @app.route('/education')
 @app.route('/go_to_prediction', methods=['GET', 'POST'])

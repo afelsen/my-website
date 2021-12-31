@@ -1,17 +1,28 @@
 {% include "base.html" %}
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/node_style.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/paint_style.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/general_style.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<body>
-
   <h2 id="title">Education</h2>
 
-  <div class="card">
-    <!-- <img src="img_avatar.png" alt="Avatar" style="width:100%"> -->
-    <div class="card-container">
-      <p> test </p>
+  <div class="card-media-wrapper" id="hackbu">
+    <div class="date">
+      <h1> 2018-2022 </h1>
+    </div>
+    <div class="card">
+      <div class="card-container">
+        <h1> Binghamton University </h1>
+        <p>
+        I am a senior working towards a dual degree:
+        <br>
+        • <span style="color:#1cb5c5"><b> Bachelor of Science in Computer Science</b></span>, Thomas J. Watson College of Engineering and Applied Science
+        <br>
+        • <span style="color:#1cb5c5"> <b> Bachelor of Arts in Mathematics</b> </span>, Harpur College of Arts and Sciences
+        <br><br>
+        I am a member of the University Scholars Program, a selective, all-University, four-year honors program for students of exceptional merit.
+        </p>
+      </div>
+    </div>
+
+    <div class="card-link">
+      <a href="static/images/binghamton.jpg" data-lightbox="binghamton" data-title="Photo of the class of 2022 from freshman year! I'm somewhere in there..."><img src=static/images/binghamton.jpg> </img></a>
     </div>
   </div>
 {% endblock %}

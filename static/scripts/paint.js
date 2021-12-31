@@ -14,6 +14,9 @@ var canvas_data = {"pencil": [], "eraser": []}
 
 doodle_arrow = []
 
+$( document ).ready(function() {
+    pencil();
+});
 
 
 function go_to_pred(){
@@ -112,6 +115,7 @@ function reset(){
 
 // pencil tool
 function pencil(){
+    console.log("TESTING");
 
     document.getElementById("pencil_icon_img").src="./static/images/icons/pencil_1_color.png";
 
