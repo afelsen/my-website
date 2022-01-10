@@ -2,7 +2,6 @@ import os
 import sys
 import json
 from flask import Flask, render_template, request, redirect, url_for
-import psycopg2
 import base64
 from io import BytesIO
 from PIL import Image
@@ -62,31 +61,6 @@ def paintapp():
         pythondata["order"] = orders_map
 
         return render_template("base.html")
-
-
-
-@app.route('/save', methods=['GET', 'POST'])
-def save():
-    conn = psycopg2.connect(database="paintmyown", user="nidhin")
-    cur = conn.cursor()
-    cur.execute("SELECT id, name, data, canvas_image from files")
-    files = cur.fetchall()
-    conn.close()
-    return render_template("save.html", files = files )
-
-@app.route('/search', methods=['GET', 'POST'])
-def search():
-    if request.method == 'GET':
-        return render_template("search.html")
-    if request.method == 'POST':
-        filename = request.form['fname']
-        conn = psycopg2.connect(database="paintmyown", user="nidhin")
-        cur = conn.cursor()
-        cur.execute("select id, name, data, canvas_image from files")
-        files = cur.fetchall()
-        conn.close()
-        return render_template("search.html", files=files, filename=filename)
-
 
 
 @app.route('/education')
