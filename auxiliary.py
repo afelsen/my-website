@@ -18,7 +18,7 @@ def squarify(M,val):
 def get_prediction(img):
     net = CNN()
     net = net.double()
-    checkpoint = torch.load(MODEL_PATH)
+    checkpoint = torch.load(MODEL_PATH, map_location ='cpu')
     net.load_state_dict(checkpoint['model_state_dict'])
     classes = ["Book", "Brain", "Computer", "Face", "Envelope"]
 
