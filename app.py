@@ -12,7 +12,7 @@ from auxiliary import *
 #set FLASK_ENV=development
 app = Flask(__name__)
 
-pythondata = {"prediction": "None", "probabilities-string": "None", "probabilities": [0,0,0,0,0], "order": [0,1,2,3,4], "destinations": ["Education", "Research and Internships", "Projects", "About", "Contact"]}
+
 
 @app.route('/getpythondata')
 def get_python_data():
@@ -34,6 +34,8 @@ def paintapp():
         prediction, index, outputs = get_prediction(img)
         probabilities_string = get_probabilities_string(outputs, index)
 
+        pythondata = {"prediction": "None", "probabilities-string": "None", "probabilities": [0,0,0,0,0], "order": [0,1,2,3,4], "destinations": ["Education", "Research and Internships", "Projects", "About", "Contact"]}
+
         pythondata["prediction"] =  prediction
         pythondata["probabilities_string"] = probabilities_string
 
@@ -53,7 +55,8 @@ def paintapp():
         pythondata["probabilities"] = probs_map
         pythondata["order"] = orders_map
 
-        return render_template("base.html")
+        return json.dumps(pythondata)
+        # render_template("base.html")
 
 
 @app.route('/education')

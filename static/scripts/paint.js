@@ -254,61 +254,63 @@ function eraser(){
     }
 }
 
-function get_python_data(){
-    $.get("/getpythondata", function(data) {
-        console.log($.parseJSON(data))
-        var pred = $.parseJSON(data)
-        // document.getElementById("prediction").innerHTML = "Prediction: " + pred["probabilities_string"];
+function set_pred_data(data){
 
-        console.log(pred["probabilities"]);
-        console.log(pred["order"]);
+      console.log($.parseJSON(data))
+      var pred = $.parseJSON(data)
+      // document.getElementById("prediction").innerHTML = "Prediction: " + pred["probabilities_string"];
 
-
-        var probs = pred["probabilities"]
-        var order = pred["order"]
-
-        var list_elements = document.querySelector("#probabilities").children;
-        for (i = 0; i < list_elements.length; i++) {
-
-            var name = list_elements[i].className
-            var o = order[name];
-            var prob = probs[name];
-
-            var img = list_elements[i].children[0].children[0]
+      console.log(pred["probabilities"]);
+      console.log(pred["order"]);
 
 
-            console.log(pred["destinations"][i])
-            if (o == 0){
-              document.getElementById("go").style.animation = "glow 2s infinite";
-              document.getElementById("gotext").innerHTML = pred["destinations"][i] + " &#8594"
-              img.style.visibility = 'visible';
+      var probs = pred["probabilities"]
+      var order = pred["order"]
 
-              list_elements[i].setAttribute( "onClick", "go_to_pred()" );
-              list_elements[i].style.cursor = "pointer";
-            }
-            else {
-              list_elements[i].removeAttribute("onClick");
-              list_elements[i].style.cursor = "none";
-              img.style.visibility = 'hidden';
-            }
+      var list_elements = document.querySelector("#probabilities").children;
+      for (i = 0; i < list_elements.length; i++) {
+
+          var name = list_elements[i].className
+          var o = order[name];
+          var prob = probs[name];
+
+          var img = list_elements[i].children[0].children[0]
 
 
-            list_elements[i].setAttribute("data-pos", o + 1);
-            list_elements[i].children[0].children[2].innerHTML = Math.round(prob * 100) + "%";
-            console.log(i)
-            console.log(list_elements[i]);
-        }
+          console.log(pred["destinations"][i])
+          if (o == 0){
+            document.getElementById("go").style.animation = "glow 2s infinite";
+            document.getElementById("gotext").innerHTML = pred["destinations"][i] + " &#8594"
+            img.style.visibility = 'visible';
+
+            list_elements[i].setAttribute( "onClick", "go_to_pred()" );
+            list_elements[i].style.cursor = "pointer";
+          }
+          else {
+            list_elements[i].removeAttribute("onClick");
+            list_elements[i].style.cursor = "none";
+            img.style.visibility = 'hidden';
+          }
 
 
+          list_elements[i].setAttribute("data-pos", o + 1);
+          list_elements[i].children[0].children[2].innerHTML = Math.round(prob * 100) + "%";
+          console.log(i)
+          console.log(list_elements[i]);
+      }
 
-    })
 }
 
 function save(){
     var data = JSON.stringify(canvas_data);
     var image = canvas.toDataURL();
-    console.log("test");
-    $.post("/", { save_cdata: data, save_image: image }, get_python_data);
+
+    $.post('/', { save_cdata: data, save_image: image},
+        function(data){
+             set_pred_data(data);
+    }).fail(function(err){
+          console.log(err);
+    });
 }
 
 function go(){
