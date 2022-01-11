@@ -11,7 +11,8 @@
 
 all_lines = []
 
-window.onload = load_arrows();
+// window.onload =
+window.addEventListener('load', debounce(load_arrows, 150));
 // window.onresize = refresh_arrows();
 window.addEventListener('resize', debounce(refresh_arrows, 150));
 
@@ -26,6 +27,7 @@ function refresh_arrows(){
 
 
 function load_arrows() {
+    console.log("TEST");
     document.getElementById("welcome").className += " loaded";
 
 
@@ -51,7 +53,7 @@ function load_arrows() {
 
                     var do_anim = true;
                     var do_hide = true;
-                    if( isMobile.any() ) {
+                    if( isMobile.any() || true ) {
                       do_anim = false;
                       do_hide = false;
                     }

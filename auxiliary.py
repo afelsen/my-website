@@ -31,30 +31,24 @@ def get_prediction(img):
 
     img = squarify(img, 0)
 
-
-    img = cv2.resize(img, (64,64), interpolation=cv2.INTER_NEAREST)
+    if img.size == 0:
+        img = np.zeros((64,64))
+    else:
+        img = cv2.resize(img, (64,64), interpolation=cv2.INTER_NEAREST)
     img[img > 0] = 255
-
-    # cv2.imwrite("static/test.png", img)
 
 
     img = img[..., np.newaxis, np.newaxis]
     img = img.astype(np.float64)
-    # img = img//255
 
-    print(img.shape)
     img = torch.from_numpy(img)
     img = torch.permute(img, (2, 3, 0, 1))
-    print(img)
 
     outputs = net(img.double())
     index = torch.argmax(outputs[0])
 
     softmax = Softmax(dim=1)
     outputs = softmax(outputs)
-
-    print(classes[index])
-    print(outputs)
 
     outputs = outputs[0].tolist()
 

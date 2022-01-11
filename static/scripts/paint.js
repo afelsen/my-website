@@ -42,7 +42,7 @@ document.body.addEventListener("touchmove", function (e) {
 }, { passive: false });
 
 
-window.onload = load_doodle_arrow();
+window.addEventListener('load', debounce(load_doodle_arrow, 150));
 window.addEventListener('resize', debounce(refresh_doodle_arrow, 200));
 
 
@@ -294,7 +294,7 @@ function get_python_data(){
 
 
             list_elements[i].setAttribute("data-pos", o + 1);
-            list_elements[i].children[0].children[2].innerHTML = Math.round(prob * 100) / 100;
+            list_elements[i].children[0].children[2].innerHTML = Math.round(prob * 100) + "%";
             console.log(i)
             console.log(list_elements[i]);
         }

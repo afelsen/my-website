@@ -25,16 +25,11 @@ def paintapp():
     if request.method == 'POST':
         data = request.form['save_cdata']
         canvas_image = request.form['save_image']
-        # conn = psycopg2.connect(database="paintmyown", user = "nidhin")
-        # cur = conn.cursor()
-        # cur.execute("INSERT INTO files (name, data, canvas_image) VALUES (%s, %s, %s)", [filename, data, canvas_image])
-        # conn.commit()
-        # conn.close()
+
         offset = canvas_image.index(',')+1
         img_bytes = base64.b64decode(canvas_image[offset:])
         img = Image.open(BytesIO(img_bytes))
         img  = np.array(img)
-
 
         prediction, index, outputs = get_prediction(img)
         probabilities_string = get_probabilities_string(outputs, index)
@@ -42,10 +37,8 @@ def paintapp():
         pythondata["prediction"] =  prediction
         pythondata["probabilities_string"] = probabilities_string
 
-        print(outputs)
         orders_list = np.argsort(-1*np.array(outputs)).tolist()
-        print(outputs)
-        print(orders_list)
+
         probs_list = outputs
 
         orders_map = {}
@@ -100,7 +93,7 @@ def go_to_prediction():
 
 
 def run():
-    port = int(os.environ.get('PORT', 5000))
+    # port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=8080)
 
 if __name__ == '__main__':
