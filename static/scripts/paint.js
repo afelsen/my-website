@@ -38,28 +38,6 @@ document.body.addEventListener("touchmove", function (e) {
 }, { passive: false });
 
 
-window.addEventListener('load', debounce(load_doodle_arrow, 150));
-window.addEventListener('resize', debounce(refresh_doodle_arrow, 200));
-
-
-function refresh_doodle_arrow(){
-  for (var i = 0; i < doodle_arrow.length; i++){
-    doodle_arrow[i].position();
-  }
-}
-
-function load_doodle_arrow() {
-  var start = document.getElementById("these");
-  var end = document.querySelector("#probabilities");
-  var line = new LeaderLine(
-      start,
-      end,
-      {}
-  );
-  line.setOptions({startSocket: 'bottom', endSocket: 'top'});
-  doodle_arrow.push(line);
-}
-
 function color(color_value){
     ctx.strokeStyle = color_value;
     ctx.fillStyle = color_value;
@@ -328,6 +306,6 @@ function go(){
     }
 
     else if (pred == "Envelope"){
-        window.location.href = "projects";
+        window.location.href = "mailto:afelsen85@gmail.com";
     }
 }

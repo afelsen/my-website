@@ -1,0 +1,26 @@
+/* https://codepen.io/AustenHolland/pen/QzyGqW */
+
+.rainbow_text {
+  display: inline-block;
+  font-family: Arial, Helvetica, sans-serif;
+  background: black;
+  /* background: linear-gradient(to right, red, orange , yellow, green, blue, indigo, violet, red, orange); */
+  background: linear-gradient(to right, red 12.5%, red 25%, yellow 37.5%, green 50%, blue 62.5%, red 75%, red 87.5%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.rainbow_text {
+      animation: rainbow_animation 10s linear infinite;
+      background-size: 400%;
+}
+
+@keyframes rainbow_animation {
+    0% {
+        background-position: 0%;
+    }
+    100% {
+        background-position: 100%;
+    }
+}

@@ -21,4 +21,98 @@
     </div>
   </div>
 
+
+  <!-- BONUS DEMO -->
+
+  <div class="row" style="justify-content: left;">
+    <h2 style="z-index: 2; margin-top: 50px; margin-bottom: 50px;"> BONUS DEMO: <span class='rainbow_text'>Change the theme </span> by drawing a dooodle </h2>
+  </div>
+
+  <div class="row">
+  <div id="pencil_icon"><img id="pencil_icon_img" src = "./static/images/icons/pencil_1_color.png"></img></div>
+  <div class="drawing-table-wrapper">
+    <div class="probabilities-wrapper drawing-item">
+          <ul id="probabilities">
+            <li class="education" data-pos="0" >
+              <div class="prob-item-wrapper">
+                <img src = ./static/images/icons/book_1_color.png class="prob-icon"></img>
+                <div class="prob-item-a">
+                  <b>Education</b>: Doodle a <br><span style="color: #f9cc38; font-size: 20px"><b>book</b></span>
+                </div>
+                <div class="prob-item-b">
+
+                </div>
+              </div>
+            </li>
+            <li class="research" data-pos="2" >
+              <div class="prob-item-wrapper">
+                <img src = ./static/images/icons/brain_2_color.png class="prob-icon"></img>
+                <div class="prob-item-a">
+                  <b>Research & Work</b>: Doodle a <br><span style="color: #f9cc38; font-size: 20px"><b>brain</b></span>
+                </div>
+                <div class="prob-item-b">
+
+                </div>
+              </div>
+            </li>
+            <!-- <li class="research" data-pos="2" >Brain - Research:</li> -->
+            <li class="projects" data-pos="3" >
+              <div class="prob-item-wrapper">
+                <img src = ./static/images/icons/computer_1_color.png class="prob-icon"></img>
+                <div class="prob-item-a">
+                  <b>Projects</b>: Doodle a <br><span style="color: #f9cc38; font-size: 20px"><b>computer</b></span>
+                </div>
+                <div class="prob-item-b">
+
+                </div>
+              </div>
+            </li>
+            <li class="about" data-pos="4" >
+              <div class="prob-item-wrapper">
+                <img src = ./static/images/icons/face_1_color.png class="prob-icon"></img>
+                <div class="prob-item-a">
+                  <b>About</b>: Doodle a <br><span style="color: #f9cc38; font-size: 20px"><b>face</b></span>
+                </div>
+                <div class="prob-item-b">
+
+                </div>
+              </div>
+            </li>
+            <li class="contact" data-pos="5" >
+              <div class="prob-item-wrapper">
+                <img src = ./static/images/icons/envelope_1_color.png class="prob-icon"></img>
+                <div class="prob-item-a">
+                  <b>Contact</b>: Doodle an <br><span style="color: #f9cc38; font-size: 20px"><b>envelope</b></span>
+                </div>
+                <div class="prob-item-b">
+
+                </div>
+              </div>
+            </li>
+          </ul>
+      </div>
+
+        <div class="canvas-wrapper drawing-item">
+            <canvas id="paint" width="512" height="512" style="border: 1px solid #ffffff;"></canvas>
+
+            <fieldset id="toolset">
+              <br>
+              <br>
+              <button id="penciltool" type="button" style="height: 50px; width: 50px;" onclick="pencil()"><img style="height: 35px; width: 35px;" src = ./static/images/icons/pencil_1_color.png></img></button>
+              <br>
+              <br>
+              <br>
+              <button id="erasertool" type="button" style="height: 50px; width: 50px;" onclick="eraser()"><img style="height: 35px; width: 35px;" src = ./static/images/icons/eraser_color.png></img></button>
+              <br>
+              <br>
+              <br>
+              <button id="resettool" type="button" style="height: 50px; width: 50px;" onclick="reset()">Reset</button>
+            </fieldset>
+        </div>
+
+      </div>
+  </div>
+  <script src=" {{ url_for('static', filename='scripts/paint.js') }}"></script>
+  <script src=" {{ url_for('static', filename='scripts/learn_more.js') }}"></script>
+
 {% endblock %}

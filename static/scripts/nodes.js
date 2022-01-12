@@ -16,7 +16,27 @@ window.addEventListener('load', debounce(load_arrows, 150));
 // window.onresize = refresh_arrows();
 window.addEventListener('resize', debounce(refresh_arrows, 150));
 
+window.addEventListener('load', debounce(load_doodle_arrow, 150));
+window.addEventListener('resize', debounce(refresh_doodle_arrow, 200));
 
+
+function refresh_doodle_arrow(){
+  for (var i = 0; i < doodle_arrow.length; i++){
+    doodle_arrow[i].position();
+  }
+}
+
+function load_doodle_arrow() {
+  var start = document.getElementById("these");
+  var end = document.querySelector("#probabilities");
+  var line = new LeaderLine(
+      start,
+      end,
+      {}
+  );
+  line.setOptions({startSocket: 'bottom', endSocket: 'top'});
+  doodle_arrow.push(line);
+}
 
 
 function refresh_arrows(){
