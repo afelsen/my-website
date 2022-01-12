@@ -76,24 +76,6 @@ def about():
 def learn_more():
     return render_template('learn_more.html')
 
-# @app.route('/education')
-@app.route('/go_to_prediction', methods=['GET', 'POST'])
-def go_to_prediction():
-    print("TESTING")
-    print(pythondata["prediction"])
-    if pythondata["prediction"] == "Book":
-        return render_template('education.html')
-    elif pythondata["prediction"] == "Face":
-        return render_template('about.html')
-    elif pythondata["prediction"] == "Computer":
-        return render_template('projects.html')
-    elif pythondata["prediction"] == "Brain":
-        return render_template('research_internships.html')
-    elif pythondata["prediction"] == "Envelope":
-        return render_template('projects.html')
-
-    return render_template('paint.html')
-
 
 def run():
     # port = int(os.environ.get('PORT', 5000))

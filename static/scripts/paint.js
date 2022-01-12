@@ -12,17 +12,13 @@ var fill_value = true;
 var stroke_value = false;
 var canvas_data = {"pencil": [], "eraser": []}
 
+var prediction_dict = {}
+
 doodle_arrow = []
 
 $( document ).ready(function() {
     pencil();
 });
-
-
-function go_to_pred(){
-  console.log("TEST")
-  window.location.href = "go_to_prediction";
-};
 
 // Prevent scrolling when touching the canvas
 document.body.addEventListener("touchstart", function (e) {
@@ -258,6 +254,7 @@ function set_pred_data(data){
 
       console.log($.parseJSON(data))
       var pred = $.parseJSON(data)
+      prediction_dict = pred;
       // document.getElementById("prediction").innerHTML = "Prediction: " + pred["probabilities_string"];
 
       console.log(pred["probabilities"]);
@@ -283,7 +280,7 @@ function set_pred_data(data){
             document.getElementById("gotext").innerHTML = pred["destinations"][i] + " &#8594"
             img.style.visibility = 'visible';
 
-            list_elements[i].setAttribute( "onClick", "go_to_pred()" );
+            list_elements[i].setAttribute( "onClick", "go()" );
             list_elements[i].style.cursor = "pointer";
           }
           else {
@@ -314,6 +311,23 @@ function save(){
 }
 
 function go(){
-    $.post("go_to_prediction");
+    var pred = prediction_dict["prediction"];
+    console.log(pred);
+    if (pred == "Book"){
+        window.location.href = "education";
+    }
+    else if (pred == "Face"){
+        window.location.href = "about";
+    }
+    else if (pred == "Computer"){
+        window.location.href = "projects";
+    }
 
+    else if (pred == "Brain"){
+        window.location.href = "research_internships";
+    }
+
+    else if (pred == "Envelope"){
+        window.location.href = "projects";
+    }
 }
