@@ -7,7 +7,7 @@ from torchvision import transforms
 
 BATCH_SIZE = 128
 NUM_EPOCHS = 10
-MODEL_PATH = "./Models/test.pth"
+MODEL_PATH = "./Models/theme.pth"
 
 def train(net, trainloader, device):
 

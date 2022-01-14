@@ -112,3 +112,8 @@
   visibility: hidden;
   opacity: 0;
 }
+
+.resume-icon {
+  min-width: 100px;
+  max-width: 100px;
+}

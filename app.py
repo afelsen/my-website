@@ -9,9 +9,11 @@ import numpy as np
 import cv2
 from auxiliary import *
 
+from flask_jsglue import JSGlue
+
 #set FLASK_ENV=development
 app = Flask(__name__)
-
+jsglue = JSGlue(app)
 
 
 @app.route('/getpythondata')
@@ -58,6 +60,38 @@ def paintapp():
         return json.dumps(pythondata)
         # render_template("base.html")
 
+@app.route('/test', methods=['GET', 'POST'])
+def themepaint():
+    if request.method == 'POST':
+        data = request.form['save_cdata']
+        canvas_image = request.form['save_image']
+
+        offset = canvas_image.index(',')+1
+        img_bytes = base64.b64decode(canvas_image[offset:])
+        img = Image.open(BytesIO(img_bytes))
+        img  = np.array(img)
+
+        prediction, index, outputs = get_theme_prediction(img)
+
+        pythondata = {"prediction": "None", "probabilities": [0,0,0,0,0], "order": [0,1,2,3,4]}
+
+        pythondata["prediction"] =  prediction
+
+        orders_list = np.argsort(-1*np.array(outputs)).tolist()
+
+        probs_list = outputs
+
+        orders_map = {}
+        probs_map = {}
+        labels = ["sun", "moon"]
+        for i in range(len(labels)):
+            orders_map[labels[i]] = orders_list.index(i)
+            probs_map[labels[i]] = probs_list[i]
+
+        pythondata["probabilities"] = probs_map
+        pythondata["order"] = orders_map
+
+        return json.dumps(pythondata)
 
 @app.route('/education')
 def education():

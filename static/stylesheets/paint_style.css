@@ -154,6 +154,7 @@ li {
   border-radius: 20px;
   padding: 18px;
   left: 0;
+  color: white;
 }
 
 [data-pos="0"] {

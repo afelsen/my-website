@@ -11,9 +11,9 @@ class CNN(nn.Module):
         self.conv2 = nn.Conv2d(6, 16, 5)
         self.fc1 = nn.Linear(2704, 512)
         self.fc2 = nn.Linear(512, 128)
-        self.fc3 = nn.Linear(128, 5)
+        self.fc3 = nn.Linear(128, 2)
 
-        
+
 
     def forward(self, x):
         x = self.pool(F.relu(self.conv1(x)))
