@@ -1,8 +1,5 @@
-prediction_dict2 = {}
-
 function set_pred_data(data){
   var pred = $.parseJSON(data)
-  prediction_dict2 = pred;
 
   var probs = pred["probabilities"]
   var order = pred["order"]
@@ -29,13 +26,15 @@ function set_pred_data(data){
   }
 
   var theme = document.getElementById('variable_theme');
-  console.log(theme);
   if (pred["prediction"] == "moon") {
       theme.setAttribute('href', Flask.url_for('static', {"filename": 'stylesheets/variable_themes/dark.css'}));
       document.cookie = "theme=dark";
-  } else {
+  } else if (pred["prediction"] == "sun"){
       theme.setAttribute('href', Flask.url_for('static', {"filename": 'stylesheets/variable_themes/light.css'}));
       document.cookie = "theme=light";
+  } else if (pred["prediction"] == "rainbow"){
+      theme.setAttribute('href', Flask.url_for('static', {"filename": 'stylesheets/variable_themes/rainbow.css'}));
+      document.cookie = "theme=rainbow";
   }
 
 
@@ -47,7 +46,7 @@ function save(){
     var data = JSON.stringify(canvas_data);
     var image = canvas.toDataURL();
 
-    $.post('/test', { save_cdata: data, save_image: image},
+    $.post('/get_theme_result', { save_cdata: data, save_image: image},
         function(data){
              set_pred_data(data);
     }).fail(function(err){

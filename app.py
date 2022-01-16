@@ -34,12 +34,10 @@ def paintapp():
         img  = np.array(img)
 
         prediction, index, outputs = get_prediction(img)
-        probabilities_string = get_probabilities_string(outputs, index)
 
-        pythondata = {"prediction": "None", "probabilities-string": "None", "probabilities": [0,0,0,0,0], "order": [0,1,2,3,4], "destinations": ["Education", "Research and Internships", "Projects", "About", "Contact"]}
+        pythondata = {"prediction": "None",  "probabilities": [0,0,0,0,0], "order": [0,1,2,3,4], "destinations": ["Education", "Research and Internships", "Projects", "About", "Contact"]}
 
         pythondata["prediction"] =  prediction
-        pythondata["probabilities_string"] = probabilities_string
 
         orders_list = np.argsort(-1*np.array(outputs)).tolist()
 
@@ -60,7 +58,7 @@ def paintapp():
         return json.dumps(pythondata)
         # render_template("base.html")
 
-@app.route('/test', methods=['GET', 'POST'])
+@app.route('/get_theme_result', methods=['GET', 'POST'])
 def themepaint():
     if request.method == 'POST':
         data = request.form['save_cdata']
@@ -83,7 +81,7 @@ def themepaint():
 
         orders_map = {}
         probs_map = {}
-        labels = ["sun", "moon"]
+        labels = ["sun", "moon", "rainbow"]
         for i in range(len(labels)):
             orders_map[labels[i]] = orders_list.index(i)
             probs_map[labels[i]] = probs_list[i]

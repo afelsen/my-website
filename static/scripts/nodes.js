@@ -1,14 +1,3 @@
-
-
-// nodes = document.getElementsByClassName('node grow');
-
-// for (var i=0; i < nodes.length; i++){
-//     console.log(nodes[i])
-
-//     draggable = new PlainDraggable(nodes[i]);
-// }
-
-
 all_lines = []
 
 // window.onload =
@@ -47,7 +36,6 @@ function refresh_arrows(){
 
 
 function load_arrows() {
-    console.log("TEST");
     document.getElementById("welcome").className += " loaded";
 
 
@@ -57,8 +45,6 @@ function load_arrows() {
     for (var i=0; i < nodes.length; i++) {
         var colA = nodes[i].children;
         for (var j=0; j < colA.length; j++){
-            console.log(colA[j]);
-
             if (i < nodes.length - 1){
                 var colB = nodes[i+1].children
                 for (var k=0; k < colB.length; k++){

@@ -18,7 +18,7 @@ def squarify(M,val):
 def get_prediction(img):
     model_path = "./NeuralNet/Models/nav.pth"
 
-    net = CNN()
+    net = CNN(5)
     net = net.double()
     checkpoint = torch.load(model_path, map_location ='cpu')
     net.load_state_dict(checkpoint['model_state_dict'])
@@ -59,11 +59,11 @@ def get_prediction(img):
 def get_theme_prediction(img):
     model_path = "./NeuralNet/Models/theme.pth"
 
-    net = CNN()
+    net = CNN(3)
     net = net.double()
     checkpoint = torch.load(model_path, map_location ='cpu')
     net.load_state_dict(checkpoint['model_state_dict'])
-    classes = ["sun", "moon"]
+    classes = ["sun", "moon", "rainbow"]
 
 
     # crop image based on bounding rectangle

@@ -89,8 +89,6 @@ function reset(){
 
 // pencil tool
 function pencil(){
-    console.log("TESTING");
-
     document.getElementById("pencil_icon_img").src="./static/images/icons/pencil_1_color.png";
 
     canvas.ontouchstart = function(e){
@@ -121,7 +119,7 @@ function pencil(){
         prevX = curX;
         prevY = curY;
         ctx.beginPath();
-        ctx.moveTo(prevX, prevY);
+        // ctx.moveTo(prevX, prevY);
     };
 
     canvas.onmousemove = mouse_move;
@@ -133,7 +131,6 @@ function pencil(){
             var leftPos = canvas.getBoundingClientRect().left + window.scrollX;
             curX = e.pageX - leftPos;
             curY = e.pageY - topPos;
-            console.log(curX, curY);
             draw();
         }
     };
@@ -154,7 +151,6 @@ function pencil(){
         ctx.strokeStyle = "#ffffff";
         ctx.stroke();
         ctx.lineWidth = 5;
-        console.log(prevX, prevY, curX, curY);
         canvas_data.pencil.push({ "startx": prevX, "starty": prevY, "endx": curX, "endy": curY, "thick": ctx.lineWidth, "color": "#ffffff" });
     }
 }
@@ -230,14 +226,8 @@ function eraser(){
 
 function set_pred_data(data){
 
-      console.log($.parseJSON(data))
       var pred = $.parseJSON(data)
       prediction_dict = pred;
-      // document.getElementById("prediction").innerHTML = "Prediction: " + pred["probabilities_string"];
-
-      console.log(pred["probabilities"]);
-      console.log(pred["order"]);
-
 
       var probs = pred["probabilities"]
       var order = pred["order"]
@@ -251,8 +241,6 @@ function set_pred_data(data){
 
           var img = list_elements[i].children[0].children[0]
 
-
-          console.log(pred["destinations"][i])
           if (o == 0){
             document.getElementById("go").style.animation = "glow 2s infinite";
             document.getElementById("gotext").innerHTML = pred["destinations"][i] + " &#8594"
@@ -270,8 +258,6 @@ function set_pred_data(data){
 
           list_elements[i].setAttribute("data-pos", o + 1);
           list_elements[i].children[0].children[2].innerHTML = Math.round(prob * 100) + "%";
-          console.log(i)
-          console.log(list_elements[i]);
       }
 
 }
@@ -290,7 +276,6 @@ function save(){
 
 function go(){
     var pred = prediction_dict["prediction"];
-    console.log(pred);
     if (pred == "Book"){
         window.location.href = "education";
     }

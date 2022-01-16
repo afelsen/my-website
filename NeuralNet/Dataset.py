@@ -16,7 +16,7 @@ class Drawing_Dataset(Dataset):
     def __init__(self, train = False, transform = None):
         self.transform = transform
         self.data = []
-        self.classes = ["sun", "moon"]
+        self.classes = ["sun", "moon", "rainbow"]
         class_data = [[]]*len(self.classes)
         for i in range(len(self.classes)):
             for j, drawing in enumerate(self.unpack_drawings(f"Data/full_binary_{self.classes[i]}.bin")):
@@ -24,9 +24,9 @@ class Drawing_Dataset(Dataset):
                     print(f"{self.classes[i]}: {j}", end = '\r')
                     im = drawing['image']
 
-                    cv2.imshow("", im)
-                    cv2.imwrite("drawings/sun.png", im)
-                    cv2.waitKey(0)
+                    # cv2.imshow("", im)
+                    # cv2.imwrite("drawings/sun.png", im)
+                    # cv2.waitKey(0)
 
                     # label = np.zeros((len(self.classes)))
                     # label[i] = 1

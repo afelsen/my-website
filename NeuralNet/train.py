@@ -79,7 +79,7 @@ if __name__ == "__main__":
 
     train_data = Drawing_Dataset(train = True, transform = transform_data)
     test_data = Drawing_Dataset(train = False, transform = None)
-    net = CNN()
+    net = CNN(3)
 
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     print("Training device: ", device)
