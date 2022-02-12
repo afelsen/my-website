@@ -117,3 +117,19 @@
   min-width: 100px;
   max-width: 100px;
 }
+
+.paper-div {
+  text-align: center;
+  position: relative;
+  z-index:0;
+}
+
+.paper-div .caption {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.paper-div:hover .caption {
+  visibility: visible;
+  opacity: 1;
+}
