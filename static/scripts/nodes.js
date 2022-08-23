@@ -67,7 +67,7 @@ function load_arrows() {
                     var line = new LeaderLine(
                         start,
                         end,
-                        {dash: {animation: do_anim}, hide: do_hide}
+                        // {dash: {animation: do_anim}, hide: do_hide}
                     );
 
 
