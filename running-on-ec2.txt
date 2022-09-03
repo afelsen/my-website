@@ -1,0 +1,5 @@
+ssh -i <path_to_ssh_key> ubuntu@<ip_address>
+git pull
+sudo systemctl stop mywebsite
+sudo systemctl start mywebsite
+sudo systemctl status mywebsite
