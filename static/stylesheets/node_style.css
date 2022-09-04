@@ -8,14 +8,16 @@ section{
 
 #welcome-slide{
   padding-bottom: 50px;
-  height: calc(100% - 30px);;
+  /* height: calc(100% - 30px);; */
 }
 #nodes-slide{
-  height: 100vh;
+  /* height: 100vh; */
+  padding-top: 20px;
   padding-bottom: 50px;
 }
 #paint-slide{
-  height: 100vh;
+  padding-top: 20px;
+  /* height: 100vh; */
 }
 
 
@@ -29,6 +31,7 @@ section{
 }
 
 #all_nodes {
+  min-width: 1000px;
   position: relative;
 }
 
