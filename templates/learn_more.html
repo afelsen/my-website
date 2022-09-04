@@ -1,5 +1,6 @@
 {% include "base.html" %}
 {% block content %}
+<div class = "background">
   <h1 id="title">Learn More About the Paint App</h1>
 
   <div class="card-media-wrapper" id="hackbu">
@@ -12,7 +13,7 @@
 
         <p>
 
-        After I saw Google's awesome <a href="https://quickdraw.withgoogle.com/data"><span style="color: #ffd139" id="these">Quick, Draw!</span></a> dataset, I knew I had to make a fun project with it.
+        I made this demo using Google's <a href="https://quickdraw.withgoogle.com/data"><span style="color: #ffd139" id="these">Quick, Draw!</span></a> dataset.
 
         <br><br>
 
@@ -20,7 +21,7 @@
 
         <br><br>
 
-        The website is built using Flask, hosted using Amazon Web Services. The code for this website can be found on <a href="https://github.com/afelsen/my-website">GitHub</a>.
+        The website is built using Flask, hosted using Amazon Web Services. The code for this website can be found at <a href="https://github.com/afelsen/my-website">GitHub</a>.
 
         <br><br>
 
@@ -129,4 +130,5 @@
   <script src=" {{ url_for('static', filename='scripts/paint.js') }}"></script>
   <script src=" {{ url_for('static', filename='scripts/learn_more.js') }}"></script>
 
+</div>
 {% endblock %}

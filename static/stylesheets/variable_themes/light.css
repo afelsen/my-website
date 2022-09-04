@@ -40,3 +40,12 @@ body {
 .resume-icon {
   content: url("/static/images/icons/resume.png");
 }
+
+#welcome-slide{ 
+}
+#nodes-slide{
+  background-color: #aed9e0;
+}
+#paint-slide{
+  background-color: #ffa69e;
+}

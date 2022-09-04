@@ -1,3 +1,25 @@
+section{
+  width: 90%;
+  padding-left: 5%;
+  padding-right: 5%;
+  
+  z-index: -1;
+}
+
+#welcome-slide{
+  padding-bottom: 50px;
+  height: calc(100% - 30px);;
+}
+#nodes-slide{
+  height: 100vh;
+  padding-bottom: 50px;
+}
+#paint-slide{
+  height: 100vh;
+}
+
+
+
 .grow {
 
 }
@@ -36,8 +58,10 @@
     border-width: 10px;
     border-color: white;
 
-    height:10vw;
-    width:10vw;
+    max-width: 10vw;
+    max-height:16vh;
+    min-width: 10vh;
+    aspect-ratio: 1;
 
     display: inline-block;
     z-index: 0;

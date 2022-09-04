@@ -17,6 +17,18 @@ var prediction_dict = {}
 doodle_arrow = []
 
 $( document ).ready(function() {
+  // onePageScroll(".main", {
+  //       sectionContainer: "section",
+  //       easing: "ease",
+  //       animationTime: 1000,
+  //       pagination: true,
+  //       updateURL: true,
+  //       keyboard: true,
+  //       beforeMove: null,
+  //       afterMove: null,
+  //       loop: false,
+  //       responsiveFallback: 600
+  //       });
     pencil();
 });
 

@@ -10,8 +10,7 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/learn_more_style.css') }}">
     {% if request.cookies.get("theme") %}
     <link id="variable_theme" rel="stylesheet" href="/static/stylesheets/variable_themes/{{ request.cookies.get("theme") }}.css">
-    <!-- <link id="variable_theme" rel="stylesheet" type="text/css" href='{{ url_for("static", filename="stylesheets/variable_themes/request.cookies.get('theme').css") }}'> -->
-    {% else %}
+    {% else %}z
     <link id="variable_theme" rel="stylesheet" type="text/css" href="{{ url_for('static', filename='stylesheets/variable_themes/dark.css') }}">
     {% endif %}
     {{ JSGlue.include() }}
@@ -22,7 +21,7 @@
 </head>
 <body>
 
-    <div class="topnav">
+    <div class="topnav" id = "topofpage">
       <h1>
         Adiel Felsen
       </h1>
@@ -35,7 +34,7 @@
       </div>
     </div>
 
-  <div style="margin-left: 5%; margin-right: 5%;">
+  <div style="margin-left: 0%; margin-right: 0%;">
   {% block content %}{% endblock %}
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
