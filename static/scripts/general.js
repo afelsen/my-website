@@ -1,3 +1,4 @@
+
 var isMobile = {
     Android: function() {
         return navigator.userAgent.match(/Android/i);
@@ -37,10 +38,10 @@ window.addEventListener('load', loaded, false);
 
 
 function loaded () {
-//   gsap.registerPlugin(ScrollTrigger);
-// // REVEAL //
-gsap.utils.toArray(".revealUp").forEach(function (elem) {
-//   ScrollTrigger.create({
+    //   gsap.registerPlugin(ScrollTrigger);
+    // // REVEAL //
+    gsap.utils.toArray(".revealUp").forEach(function (elem) {
+    //   ScrollTrigger.create({
     // trigger: elem,
     // start: "top 80%",
     // end: "bottom 20%",

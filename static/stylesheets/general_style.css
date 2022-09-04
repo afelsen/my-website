@@ -1,5 +1,16 @@
 @font-face { font-family: nasalization; src: url('/static/nasalization.ttf'); } 
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.background {
+  margin : 8px;
+  margin-left: 5%; 
+  margin-right: 5%;
+}
+
 .topnav {
   overflow: hidden;
   background-color: transparent;
