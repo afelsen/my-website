@@ -2,14 +2,14 @@
 {% block content %}
 
   <section id="welcome-slide">
-        <h1 id = "welcome" class = "revealup" style="font-size: 75"> Welcome! </h1>
-
+        <h1 id = "welcome"  style="font-size: 75"> Welcome! </h1>
+                <!-- class = "revealup" -->
         <div class="row">
             <!-- <div class="card"> -->
               <!-- <img src="img_avatar.png" alt="Avatar" style="width:100%"> -->
               <!-- <div class="card-container"> -->
                 <p id="intro"> I am a <span style="color: #1cb5c5">machine learning</span> master's
-                  student passionate about Computer Vision and Big Data.
+                  student passionate about computer vision and big data.
                   <!-- I am excited to play a part in the recent advancements in machine learning which hold the promise of
                   solving and simplifying the most complex problems of our world. -->
                 </p>
@@ -18,7 +18,7 @@
         </div>
 
         <div class="row" style="text-align:center; margin-top: 50px;">
-          <h1 style="width:100%">Contact Me!</h1>
+          <h1 style="width:100%">Contact Me</h1>
         </div>
         <div class="row">
           <div class="contact-links">
@@ -86,6 +86,14 @@
             </div>
           </div>
           <div class="column four_col" id = "col2">
+
+            <div class="node_div">
+                <a href="{{url_for('research_internships')}}#Rivian-internship">
+                  <img src = "./static/images/Rivian-compass-logo.jpg" class = "node grow"></img>
+                </a>
+                <p class="caption">Rivian Internship</p>
+                <br>
+              </div>
 
             <div class="node_div">
               <a href="{{url_for('research_internships')}}#NASA-internship">
